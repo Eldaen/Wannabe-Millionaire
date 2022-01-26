@@ -15,6 +15,7 @@
 		D0E9403627A150B1005A2879 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E9403427A150B1005A2879 /* LaunchScreen.storyboard */; };
 		D0E9403F27A152C7005A2879 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9403E27A152C7005A2879 /* GameViewController.swift */; };
 		D0E9404427A15D38005A2879 /* UIViewOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9404327A15D38005A2879 /* UIViewOutline.swift */; };
+		D0E9404827A18CA1005A2879 /* RecordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9404727A18CA1005A2879 /* RecordsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D0E9403727A150B1005A2879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0E9403E27A152C7005A2879 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		D0E9404327A15D38005A2879 /* UIViewOutline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewOutline.swift; sourceTree = "<group>"; };
+		D0E9404727A18CA1005A2879 /* RecordsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				D0E9402D27A150B0005A2879 /* MainScreenViewController.swift */,
 				D0E9403E27A152C7005A2879 /* GameViewController.swift */,
+				D0E9404727A18CA1005A2879 /* RecordsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E9404827A18CA1005A2879 /* RecordsTableViewController.swift in Sources */,
 				D0E9403F27A152C7005A2879 /* GameViewController.swift in Sources */,
 				D0E9404427A15D38005A2879 /* UIViewOutline.swift in Sources */,
 				D0E9402E27A150B0005A2879 /* MainScreenViewController.swift in Sources */,
