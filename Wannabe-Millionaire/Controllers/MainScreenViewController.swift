@@ -10,6 +10,10 @@ import UIKit
 /// Контроллер главного меню
 final class MainScreenViewController: UIViewController {
 	
+	@IBAction func newGame(_ sender: Any) {
+	}
+	@IBAction func showRecords(_ sender: Any) {
+	}
 	
 	
 	override func viewDidLoad() {
