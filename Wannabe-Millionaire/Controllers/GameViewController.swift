@@ -51,26 +51,25 @@ final class GameViewController: UIViewController {
 	
 	private func checkAnswer(for tag: Int) {
 		if questions[session.currentQuestionId].checkAnswer(tag) {
-			UIView.animate(withDuration: 0.5) { [weak self] in
-				self?.answerButtons[tag - 1].backgroundColor = .green
-			} completion: { [weak self] _ in
-				UIView.animate(withDuration: 0.5) { [weak self] in
-					self?.answerButtons[tag - 1].backgroundColor = .black
-				} completion: { [weak self] _ in
-						self?.nextQuestion()
-				}
-
+			animateAnswer(for: tag, result: true) { [weak self] in
+				self?.nextQuestion()
 			}
 		} else {
+			animateAnswer(for: tag, result: false) { [weak self] in
+				self?.endGame()
+			}
+		}
+	}
+	
+	/// Анимирует  ответ
+	func animateAnswer(for id: Int, result: Bool, completion: @escaping () -> Void) {
+		UIView.animate(withDuration: 0.5) { [weak self] in
+			self?.answerButtons[id - 1].backgroundColor = result ? .green : .red
+		} completion: { [weak self] _ in
 			UIView.animate(withDuration: 0.5) { [weak self] in
-				self?.answerButtons[tag - 1].backgroundColor = .red
-			} completion: { [weak self] _ in
-				UIView.animate(withDuration: 0.5) { [weak self] in
-					self?.answerButtons[tag - 1].backgroundColor = .black
-				} completion: { [weak self] _ in
-						self?.endGame()
-				}
-
+				self?.answerButtons[id - 1].backgroundColor = .black
+			} completion: { _ in
+				completion()
 			}
 		}
 	}
