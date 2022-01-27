@@ -22,6 +22,9 @@ final class GameViewController: UIViewController {
 	
 	/// Номер текущего вопроса
 	var currentQuestionId: Int = 0
+	
+	/// Текущее кол-во правильных ответов
+	var score: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +51,7 @@ final class GameViewController: UIViewController {
 		if questions[currentQuestionId].checkAnswer(tag) {
 			nextQuestion()
 		} else {
-			print("Wrong!")
+			endGame()
 		}
 	}
 	
@@ -77,6 +80,7 @@ final class GameViewController: UIViewController {
 	/// Переводит игру к следующему вопросу
 	private func nextQuestion() {
 		currentQuestionId += 1
+		score += 1
 		if questions.count > currentQuestionId {
 			displayQuestion(questions[currentQuestionId])
 		} else {
@@ -87,6 +91,8 @@ final class GameViewController: UIViewController {
 	/// Заканчивает игру
 	private func endGame() {
 		print("Game over!")
+		let record = Record(date: Date(), score: score)
+		Game.shared.addRecord(record)
 		navigationController?.popViewController(animated: true)
 	}
     
