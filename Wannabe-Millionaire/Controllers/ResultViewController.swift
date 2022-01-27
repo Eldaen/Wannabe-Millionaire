@@ -28,6 +28,7 @@ final class ResultViewController: UIViewController {
 		navigationController?.isNavigationBarHidden = true
     }
 	
+	/// Выводит сообщение окончания игры
 	private func displayResult() {
 		if success {
 			resultLabel.text = "Поздравляю, вы победили!"
