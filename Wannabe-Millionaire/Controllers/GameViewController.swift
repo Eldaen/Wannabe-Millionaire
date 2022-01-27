@@ -203,16 +203,22 @@ final class GameViewController: UIViewController {
 	/// Использовать подсказку Помощь зала
 	private func useHallHelpClue() {
 		let key: Question.HallHelp
+		let halfResults: Bool
+		
 		if session.currentQuestionClues.contains(Clues.fiftyFifty.rawValue) {
 			key = .half
+			halfResults = true
 		} else {
 			key = .full
+			halfResults = false
 		}
 		
 		if let vc = self.storyboard?.instantiateViewController(
 			withIdentifier: "HallHelpViewController"
 		) as? HallHelpViewController {
 			vc.clueData = questions[session.currentQuestionId].getHallHelp(for: key)
+			vc.halfResults = halfResults
+			vc.removedAnswers = questions[session.currentQuestionId].fiftyFiftyClue
 			present(vc, animated: true, completion: nil)
 		}
 		
