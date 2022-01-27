@@ -23,6 +23,7 @@
 		D0E9405427A2909E005A2879 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9405327A2909E005A2879 /* Game.swift */; };
 		D0E9405627A29D9C005A2879 /* RecordsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9405527A29D9C005A2879 /* RecordsCaretaker.swift */; };
 		D0E9405827A29E76005A2879 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9405727A29E76005A2879 /* GameSession.swift */; };
+		D0E9405A27A2A113005A2879 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9405927A2A113005A2879 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		D0E9405327A2909E005A2879 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		D0E9405527A29D9C005A2879 /* RecordsCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCaretaker.swift; sourceTree = "<group>"; };
 		D0E9405727A29E76005A2879 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		D0E9405927A2A113005A2879 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				D0E9402D27A150B0005A2879 /* MainScreenViewController.swift */,
 				D0E9403E27A152C7005A2879 /* GameViewController.swift */,
 				D0E9404727A18CA1005A2879 /* RecordsTableViewController.swift */,
+				D0E9405927A2A113005A2879 /* ResultViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E9405A27A2A113005A2879 /* ResultViewController.swift in Sources */,
 				D0E9404827A18CA1005A2879 /* RecordsTableViewController.swift in Sources */,
 				D0E9405427A2909E005A2879 /* Game.swift in Sources */,
 				D0E9403F27A152C7005A2879 /* GameViewController.swift in Sources */,

@@ -16,11 +16,18 @@ struct GameSession {
 	/// Текущее кол-во правильных ответов
 	var score: Int
 	
+	/// Победил или проиграл
+	var success: Bool = false
+	
 	mutating func increaseScore() {
 		score += 1
 	}
 	
 	mutating func nextQuestion() {
 		currentQuestionId += 1
+	}
+	
+	mutating func didWin() {
+		success = true
 	}
 }

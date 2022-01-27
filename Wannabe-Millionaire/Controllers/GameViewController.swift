@@ -7,6 +7,11 @@
 
 import UIKit
 
+/// Протокол делегата для инициации запуска новой игры
+protocol NewGameDelegate {
+	func startNewGame()
+}
+
 /// Основной контроллер игры
 final class GameViewController: UIViewController {
 	
@@ -46,9 +51,27 @@ final class GameViewController: UIViewController {
 	
 	private func checkAnswer(for tag: Int) {
 		if questions[session.currentQuestionId].checkAnswer(tag) {
-			nextQuestion()
+			UIView.animate(withDuration: 0.5) { [weak self] in
+				self?.answerButtons[tag - 1].backgroundColor = .green
+			} completion: { [weak self] _ in
+				UIView.animate(withDuration: 0.5) { [weak self] in
+					self?.answerButtons[tag - 1].backgroundColor = .black
+				} completion: { [weak self] _ in
+						self?.nextQuestion()
+				}
+
+			}
 		} else {
-			endGame()
+			UIView.animate(withDuration: 0.5) { [weak self] in
+				self?.answerButtons[tag - 1].backgroundColor = .red
+			} completion: { [weak self] _ in
+				UIView.animate(withDuration: 0.5) { [weak self] in
+					self?.answerButtons[tag - 1].backgroundColor = .black
+				} completion: { [weak self] _ in
+						self?.endGame()
+				}
+
+			}
 		}
 	}
 	
@@ -66,10 +89,26 @@ final class GameViewController: UIViewController {
 	
 	/// Заполняет поля вопроса
 	private func displayQuestion(_ question: Question) {
-		questionTextField.text = question.text
-		
-		for (index, label) in answerLabels.enumerated() {
-			label.text = question.answerOptions[index]
+		UIView.animate(withDuration: 0.4) { [weak self] in
+			self?.questionTextField.alpha = 0
+			
+			if let labels = self?.answerLabels {
+				for label in labels {
+					label.alpha = 0
+				}
+			}
+		} completion: { [weak self] _ in
+			UIView.animate(withDuration: 0.2) { [weak self] in
+				self?.questionTextField.text = question.text
+				self?.questionTextField.alpha = 1
+				
+				if let labels = self?.answerLabels.enumerated() {
+					for (index, label) in labels {
+						label.alpha = 1
+						label.text = question.answerOptions[index]
+					}
+				}
+			}
 		}
 	}
 	
@@ -83,6 +122,7 @@ final class GameViewController: UIViewController {
 		if questions.count > questionId {
 			displayQuestion(questions[questionId])
 		} else {
+			session.didWin()
 			endGame()
 		}
 	}
@@ -92,6 +132,27 @@ final class GameViewController: UIViewController {
 		print("Game over!")
 		let record = Record(date: Date(), score: session.score)
 		Game.shared.addRecord(record)
-		navigationController?.popViewController(animated: true)
+		
+		if let vc = self.storyboard?.instantiateViewController(
+			withIdentifier: "ResultViewController"
+		) as? ResultViewController {
+			vc.success = session.success
+			vc.score = session.score
+			vc.delegate = self
+			navigationController?.pushViewController(vc, animated: true)
+		} else {
+			navigationController?.popViewController(animated: true)
+		}
+	}
+}
+
+// MARK: NewGameDelegate
+
+extension GameViewController: NewGameDelegate {
+	func startNewGame() {
+		session = GameSession(currentQuestionId: 0, score: 0, success: false)
+		questions = []
+		loadQuestions()
+		startTheGame()
 	}
 }
