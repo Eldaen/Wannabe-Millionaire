@@ -31,8 +31,10 @@ final class HallHelpViewController: UIViewController {
 	/// Отрисовать результаты голосования
 	private func drawVoteResults() {
 		for (index, view) in voteResults.enumerated() {
-			if index == removedAnswers[0] || index == removedAnswers[1] {
-				view.isHidden = true
+			if halfResults {
+				if index == removedAnswers[0] || index == removedAnswers[1] {
+					view.isHidden = true
+				}
 			}
 			
 			let width = CGFloat(self.clueData[index] * Int(self.resultView.frame.width) / 120)

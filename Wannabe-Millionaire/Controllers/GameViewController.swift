@@ -177,6 +177,10 @@ final class GameViewController: UIViewController {
 	
 	/// Использовать подсказку 50 на 50
 	private func useFiftyFiftyClue() {
+		guard !session.usedClues.contains(Clues.fiftyFifty.rawValue) else {
+			return
+		}
+		
 		let clue = questions[session.currentQuestionId].fiftyFiftyClue
 		
 		UIView.animate(withDuration: 0.4) { [weak self] in
@@ -187,10 +191,15 @@ final class GameViewController: UIViewController {
 		}
 		session.usedClues.append(Clues.fiftyFifty.rawValue)
 		session.currentQuestionClues.append(Clues.fiftyFifty.rawValue)
+		showClueAsUsed(.fiftyFifty)
 	}
 	
 	/// Использовать подсказку Звонок другу
 	private func useFriendCallClue() {
+		guard !session.usedClues.contains(Clues.callFriend.rawValue) else {
+			return
+		}
+		
 		let clue = questions[session.currentQuestionId].callFriendClue
 		
 		UIView.animate(withDuration: 0.4) { [weak self] in
@@ -198,16 +207,23 @@ final class GameViewController: UIViewController {
 		}
 		session.usedClues.append(Clues.callFriend.rawValue)
 		session.currentQuestionClues.append(Clues.callFriend.rawValue)
+		showClueAsUsed(.callFriend)
 	}
 	
 	/// Использовать подсказку Помощь зала
 	private func useHallHelpClue() {
+		guard !session.currentQuestionClues.contains(Clues.hallHelp.rawValue) else {
+			return
+		}
+		
 		let key: Question.HallHelp
 		let halfResults: Bool
+		var removedResults: [Int] = []
 		
 		if session.currentQuestionClues.contains(Clues.fiftyFifty.rawValue) {
 			key = .half
 			halfResults = true
+			removedResults = questions[session.currentQuestionId].fiftyFiftyClue
 		} else {
 			key = .full
 			halfResults = false
@@ -218,12 +234,13 @@ final class GameViewController: UIViewController {
 		) as? HallHelpViewController {
 			vc.clueData = questions[session.currentQuestionId].getHallHelp(for: key)
 			vc.halfResults = halfResults
-			vc.removedAnswers = questions[session.currentQuestionId].fiftyFiftyClue
+			vc.removedAnswers = removedResults
 			present(vc, animated: true, completion: nil)
 		}
 		
 		session.usedClues.append(Clues.hallHelp.rawValue)
 		session.currentQuestionClues.append(Clues.hallHelp.rawValue)
+		showClueAsUsed(.hallHelp)
 	}
 	
 	/// Убрать изменения интерфейса, которые сделали подсказки
@@ -255,6 +272,21 @@ final class GameViewController: UIViewController {
 			}
 		}
 	}
+	
+	private func showClueAsUsed(_ clue: Clues) {
+		if let image = clueCollection[clue.rawValue].subviews.first {
+			image.tintColor = .red
+		}
+	}
+	
+	/// Возвращает цвет подсказок к обычному
+	private func clearCluesButtons() {
+		for clue in clueCollection {
+			if let image = clue.subviews.first {
+				image.tintColor = .white
+			}
+		}
+	}
 }
 
 // MARK: NewGameDelegate
@@ -263,6 +295,7 @@ extension GameViewController: NewGameDelegate {
 	func startNewGame() {
 		session = GameSession()
 		questions = []
+		clearCluesButtons()
 		
 		loadQuestions()
 		startTheGame()
