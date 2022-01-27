@@ -24,15 +24,24 @@ final class Game {
 	
 	private init() {
 		records = recordsCaretaker.retrieveRecords()
+		sortRecords()
 	}
 	
 	/// Добавить рекорд
 	func addRecord(_ record: Record) {
-		self.records.append(record)
+		records.append(record)
+		sortRecords()
 	}
 	
 	/// Очистить рекорды
 	func clearRecords() {
 		self.records = []
+	}
+	
+	/// Сортируем рекорды
+	func sortRecords() {
+		records = records.sorted(by: {
+			$0.score > $1.score
+		})
 	}
 }
