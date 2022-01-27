@@ -42,6 +42,8 @@ final class GameViewController: UIViewController {
 		}
 	}
 	
+	// MARK: - Private methods
+	
 	private func checkAnswer(for tag: Int) {
 		if questions[currentQuestionId].checkAnswer(tag) {
 			nextQuestion()
