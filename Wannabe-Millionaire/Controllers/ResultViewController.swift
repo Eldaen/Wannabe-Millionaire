@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
+/// Контроллер для отображения результатов игры
+final class ResultViewController: UIViewController {
 	
 	@IBOutlet weak var resultLabel: UILabel!
 	@IBOutlet weak var scoreLabel: UILabel!

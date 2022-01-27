@@ -9,6 +9,13 @@ import Foundation
 
 /// Модель вопроса
 struct Question: Codable {
+	
+	/// Варианты подсказки помощь зала
+	enum HallHelp: String {
+		case full = "full"
+		case half = "half"
+	}
+	
 	var text: String
 	
 	/// Массив возможных ответов на вопрос
@@ -32,6 +39,16 @@ struct Question: Codable {
 			return true
 		} else {
 			return false
+		}
+	}
+	
+	/// Возвращает данные по подсказке Помощь зала
+	func getHallHelp(for key: HallHelp) -> [Int] {
+		switch key {
+		case .full:
+			return hallHelp.full
+		case .half:
+			return hallHelp.half
 		}
 	}
 }

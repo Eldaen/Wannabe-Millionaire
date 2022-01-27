@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 /// Протокол делегата для инициации запуска новой игры
 protocol NewGameDelegate {
@@ -162,6 +163,7 @@ final class GameViewController: UIViewController {
 		}
 	}
 	
+	/// Использует подсказку
 	private func useClue(for clue: Clues) {
 		switch clue {
 		case .fiftyFifty:
@@ -176,6 +178,7 @@ final class GameViewController: UIViewController {
 	/// Использовать подсказку 50 на 50
 	private func useFiftyFiftyClue() {
 		let clue = questions[session.currentQuestionId].fiftyFiftyClue
+		
 		UIView.animate(withDuration: 0.4) { [weak self] in
 			for id in clue {
 				self?.answerButtons[id].alpha = 0
@@ -199,6 +202,20 @@ final class GameViewController: UIViewController {
 	
 	/// Использовать подсказку Помощь зала
 	private func useHallHelpClue() {
+		let key: Question.HallHelp
+		if session.currentQuestionClues.contains(Clues.fiftyFifty.rawValue) {
+			key = .half
+		} else {
+			key = .full
+		}
+		
+		if let vc = self.storyboard?.instantiateViewController(
+			withIdentifier: "HallHelpViewController"
+		) as? HallHelpViewController {
+			vc.clueData = questions[session.currentQuestionId].getHallHelp(for: key)
+			present(vc, animated: true, completion: nil)
+		}
+		
 		session.usedClues.append(Clues.hallHelp.rawValue)
 		session.currentQuestionClues.append(Clues.hallHelp.rawValue)
 	}
