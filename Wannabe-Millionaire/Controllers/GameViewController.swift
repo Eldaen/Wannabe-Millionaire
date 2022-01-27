@@ -15,6 +15,14 @@ protocol NewGameDelegate {
 /// Основной контроллер игры
 final class GameViewController: UIViewController {
 	
+	/// Типы подсказок
+	enum Clues: Int {
+		case fiftyFifty = 0
+		case callFriend = 1
+		case hallHelp = 2
+	}
+	
+	@IBOutlet var clueCollection: [UIView]!
 	@IBOutlet weak var questionTextField: UILabel!
 	@IBOutlet var answerButtons: [UIView]!
 	@IBOutlet var answerLabels: [UILabel]!
@@ -44,6 +52,15 @@ final class GameViewController: UIViewController {
 					break
 				}
 			}
+			
+			for clue in clueCollection {
+				if hitView == clue {
+					if let clueName = Clues(rawValue: clue.tag) {
+						useClue(for: clueName)
+					}
+					break
+				}
+			}
 		}
 	}
 	
@@ -62,12 +79,12 @@ final class GameViewController: UIViewController {
 	}
 	
 	/// Анимирует  ответ
-	func animateAnswer(for id: Int, result: Bool, completion: @escaping () -> Void) {
+	private func animateAnswer(for id: Int, result: Bool, completion: @escaping () -> Void) {
 		UIView.animate(withDuration: 0.5) { [weak self] in
-			self?.answerButtons[id - 1].backgroundColor = result ? .green : .red
+			self?.answerButtons[id].backgroundColor = result ? .green : .red
 		} completion: { [weak self] _ in
 			UIView.animate(withDuration: 0.5) { [weak self] in
-				self?.answerButtons[id - 1].backgroundColor = .black
+				self?.answerButtons[id].backgroundColor = .black
 			} completion: { _ in
 				completion()
 			}
@@ -128,7 +145,6 @@ final class GameViewController: UIViewController {
 	
 	/// Заканчивает игру
 	private func endGame() {
-		print("Game over!")
 		let record = Record(date: Date(), score: session.score)
 		Game.shared.addRecord(record)
 		
@@ -143,6 +159,42 @@ final class GameViewController: UIViewController {
 			navigationController?.popViewController(animated: true)
 		}
 	}
+	
+	private func useClue(for clue: Clues) {
+		switch clue {
+		case .fiftyFifty:
+			useFiftyFiftyClue()
+		case .callFriend:
+			useFriendCallClue()
+		case .hallHelp:
+			useHallHelpClue()
+		}
+	}
+	
+	/// Использовать подсказку 50 на 50
+	private func useFiftyFiftyClue() {
+		let clue = questions[session.currentQuestionId].fiftyFiftyClue
+		UIView.animate(withDuration: 0.4) { [weak self] in
+			for id in clue {
+				self?.answerButtons[id].alpha = 0
+				self?.answerButtons[id].isHidden = true
+			}
+		}
+		session.usedClues.append(Clues.fiftyFifty.rawValue)
+	}
+	
+	/// Использовать подсказку Звонок другу
+	private func useFriendCallClue() {
+		let clue = questions[session.currentQuestionId].callFriendClue
+		UIView.animate(withDuration: 0.4) { [weak self] in
+			self?.answerButtons[clue].backgroundColor = .orange
+		}
+		session.usedClues.append(Clues.callFriend.rawValue)
+	}
+	
+	private func useHallHelpClue() {
+		session.usedClues.append(Clues.hallHelp.rawValue)
+	}
 }
 
 // MARK: NewGameDelegate
@@ -151,6 +203,7 @@ extension GameViewController: NewGameDelegate {
 	func startNewGame() {
 		session = GameSession(currentQuestionId: 0, score: 0, success: false)
 		questions = []
+		
 		loadQuestions()
 		startTheGame()
 	}

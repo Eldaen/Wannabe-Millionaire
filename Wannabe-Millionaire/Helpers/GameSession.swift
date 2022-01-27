@@ -19,14 +19,20 @@ struct GameSession {
 	/// Победил или проиграл
 	var success: Bool = false
 	
+	/// Массив использованных подсказок
+	var usedClues: [Int] = []
+	
+	/// Увеличить результат на 1
 	mutating func increaseScore() {
 		score += 1
 	}
 	
+	/// Увеличить ID вопроса на 1
 	mutating func nextQuestion() {
 		currentQuestionId += 1
 	}
 	
+	/// Зафиксировать факт победы
 	mutating func didWin() {
 		success = true
 	}

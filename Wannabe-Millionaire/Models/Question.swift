@@ -17,6 +17,15 @@ struct Question: Codable {
 	/// ID правильного ответа из массива answerOptions
 	var correctAnswer: Int
 	
+	/// ID результатов, которые нужно убрать после подсказки fiftyFifty
+	var fiftyFiftyClue: [Int]
+	
+	/// ID, который нужно подсветить как верный, после подсказки Звонок другу
+	var callFriendClue: Int
+	
+	/// Помощь зала
+	var hallHelp: HallHelpClue
+	
 	/// Проверяет верность ответа
 	func checkAnswer(_ id: Int) -> Bool {
 		if correctAnswer == id {

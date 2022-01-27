@@ -24,6 +24,7 @@
 		D0E9405627A29D9C005A2879 /* RecordsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9405527A29D9C005A2879 /* RecordsCaretaker.swift */; };
 		D0E9405827A29E76005A2879 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9405727A29E76005A2879 /* GameSession.swift */; };
 		D0E9405A27A2A113005A2879 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9405927A2A113005A2879 /* ResultViewController.swift */; };
+		D0E9405C27A2BB60005A2879 /* HallHelpClue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9405B27A2BB60005A2879 /* HallHelpClue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		D0E9405527A29D9C005A2879 /* RecordsCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCaretaker.swift; sourceTree = "<group>"; };
 		D0E9405727A29E76005A2879 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		D0E9405927A2A113005A2879 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		D0E9405B27A2BB60005A2879 /* HallHelpClue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallHelpClue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			children = (
 				D0E9404A27A19BDD005A2879 /* Question.swift */,
 				D0E9405127A28F48005A2879 /* Record.swift */,
+				D0E9405B27A2BB60005A2879 /* HallHelpClue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			files = (
 				D0E9405A27A2A113005A2879 /* ResultViewController.swift in Sources */,
 				D0E9404827A18CA1005A2879 /* RecordsTableViewController.swift in Sources */,
+				D0E9405C27A2BB60005A2879 /* HallHelpClue.swift in Sources */,
 				D0E9405427A2909E005A2879 /* Game.swift in Sources */,
 				D0E9403F27A152C7005A2879 /* GameViewController.swift in Sources */,
 				D0E9405227A28F48005A2879 /* Record.swift in Sources */,
