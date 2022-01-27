@@ -10,17 +10,26 @@ import UIKit
 /// Контроллер главного меню
 final class MainScreenViewController: UIViewController {
 	
-	@IBAction func newGame(_ sender: Any) {
+	@IBOutlet weak var newGameButton: UIButton!
+	@IBOutlet weak var recordsButton: UIButton!
+	
+	
+	@IBAction func newGame(_ sender: UIButton) {
 	}
-	@IBAction func showRecords(_ sender: Any) {
+	@IBAction func showRecords(_ sender: UIButton) {
 	}
 	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
+		setupButtons()
 	}
 
+	private func setupButtons() {
+		let height = newGameButton.frame.height - 5
+		newGameButton.layer.cornerRadius = height / 2
+		recordsButton.layer.cornerRadius = height / 2
+	}
 
 }
 
