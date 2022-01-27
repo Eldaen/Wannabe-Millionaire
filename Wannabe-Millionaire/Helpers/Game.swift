@@ -9,13 +9,22 @@ import Foundation
 
 /// Cинглтон, который хранит данные об игре
 final class Game {
+
+	/// Массив рекордов
+	private(set) var records: [Record] {
+		didSet {
+			recordsCaretaker.save(records: self.records)
+		}
+	}
+	
+	/// Cервис для сохранения и загрузки рекордов
+	private let recordsCaretaker = RecordsCaretaker()
 	
 	static let shared = Game()
 	
-	/// Массив рекордов
-	private(set) var records: [Record] = []
-	
-	private init() { }
+	private init() {
+		records = recordsCaretaker.retrieveRecords()
+	}
 	
 	/// Добавить рекорд
 	func addRecord(_ record: Record) {

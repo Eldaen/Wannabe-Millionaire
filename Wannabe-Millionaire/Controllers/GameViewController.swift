@@ -20,12 +20,9 @@ final class GameViewController: UIViewController {
 	/// Массив вопросов
 	var questions: [Question] = []
 	
-	/// Номер текущего вопроса
-	var currentQuestionId: Int = 0
+	/// Текущая сессия игры
+	var session = GameSession(currentQuestionId: 0, score: 0)
 	
-	/// Текущее кол-во правильных ответов
-	var score: Int = 0
-
     override func viewDidLoad() {
         super.viewDidLoad()
 		loadQuestions()
@@ -48,7 +45,7 @@ final class GameViewController: UIViewController {
 	// MARK: - Private methods
 	
 	private func checkAnswer(for tag: Int) {
-		if questions[currentQuestionId].checkAnswer(tag) {
+		if questions[session.currentQuestionId].checkAnswer(tag) {
 			nextQuestion()
 		} else {
 			endGame()
@@ -58,7 +55,6 @@ final class GameViewController: UIViewController {
 	/// Загружает данные вопросов
 	private func loadQuestions() {
 		questions = questionsService.loadQuestions()
-		currentQuestionId = 0
 	}
 	
 	/// Запускает игру
@@ -79,10 +75,13 @@ final class GameViewController: UIViewController {
 	
 	/// Переводит игру к следующему вопросу
 	private func nextQuestion() {
-		currentQuestionId += 1
-		score += 1
-		if questions.count > currentQuestionId {
-			displayQuestion(questions[currentQuestionId])
+		session.nextQuestion()
+		session.increaseScore()
+		
+		let questionId = session.currentQuestionId
+		
+		if questions.count > questionId {
+			displayQuestion(questions[questionId])
 		} else {
 			endGame()
 		}
@@ -91,20 +90,8 @@ final class GameViewController: UIViewController {
 	/// Заканчивает игру
 	private func endGame() {
 		print("Game over!")
-		let record = Record(date: Date(), score: score)
+		let record = Record(date: Date(), score: session.score)
 		Game.shared.addRecord(record)
 		navigationController?.popViewController(animated: true)
 	}
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
