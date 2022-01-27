@@ -11,16 +11,23 @@ import Foundation
 struct GameSession {
 	
 	/// Номер текущего вопроса
-	var currentQuestionId: Int
+	var currentQuestionId: Int = 0 {
+		didSet {
+			currentQuestionClues = []
+		}
+	}
 	
 	/// Текущее кол-во правильных ответов
-	var score: Int
+	var score: Int = 0
 	
 	/// Победил или проиграл
 	var success: Bool = false
 	
 	/// Массив использованных подсказок
 	var usedClues: [Int] = []
+	
+	/// Использованные на этом вопросе подсказки
+	var currentQuestionClues: [Int] = []
 	
 	/// Увеличить результат на 1
 	mutating func increaseScore() {

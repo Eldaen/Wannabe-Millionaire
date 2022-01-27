@@ -34,7 +34,7 @@ final class GameViewController: UIViewController {
 	var questions: [Question] = []
 	
 	/// Текущая сессия игры
-	var session = GameSession(currentQuestionId: 0, score: 0)
+	var session = GameSession()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,9 +66,11 @@ final class GameViewController: UIViewController {
 	
 	// MARK: - Private methods
 	
+	/// Проверяет правильность ответа
 	private func checkAnswer(for tag: Int) {
 		if questions[session.currentQuestionId].checkAnswer(tag) {
 			animateAnswer(for: tag, result: true) { [weak self] in
+				self?.cleanClues()
 				self?.nextQuestion()
 			}
 		} else {
@@ -181,19 +183,54 @@ final class GameViewController: UIViewController {
 			}
 		}
 		session.usedClues.append(Clues.fiftyFifty.rawValue)
+		session.currentQuestionClues.append(Clues.fiftyFifty.rawValue)
 	}
 	
 	/// Использовать подсказку Звонок другу
 	private func useFriendCallClue() {
 		let clue = questions[session.currentQuestionId].callFriendClue
+		
 		UIView.animate(withDuration: 0.4) { [weak self] in
 			self?.answerButtons[clue].backgroundColor = .orange
 		}
 		session.usedClues.append(Clues.callFriend.rawValue)
+		session.currentQuestionClues.append(Clues.callFriend.rawValue)
 	}
 	
+	/// Использовать подсказку Помощь зала
 	private func useHallHelpClue() {
 		session.usedClues.append(Clues.hallHelp.rawValue)
+		session.currentQuestionClues.append(Clues.hallHelp.rawValue)
+	}
+	
+	/// Убрать изменения интерфейса, которые сделали подсказки
+	private func cleanClues() {
+		for clue in session.currentQuestionClues {
+			if let clue = Clues(rawValue: clue) {
+				
+				switch clue {
+				case .fiftyFifty:
+					UIView.animate(withDuration: 0.4) { [weak self] in
+						if let buttons = self?.answerButtons {
+							for button in buttons {
+								button.alpha = 1
+								button.isHidden = false
+							}
+						}
+					}
+				case .callFriend:
+					UIView.animate(withDuration: 0.4) { [weak self] in
+						if let buttons = self?.answerButtons {
+							for button in buttons {
+								button.backgroundColor = .black
+							}
+						}
+					}
+				case .hallHelp:
+					return
+				}
+			}
+		}
 	}
 }
 
@@ -201,7 +238,7 @@ final class GameViewController: UIViewController {
 
 extension GameViewController: NewGameDelegate {
 	func startNewGame() {
-		session = GameSession(currentQuestionId: 0, score: 0, success: false)
+		session = GameSession()
 		questions = []
 		
 		loadQuestions()
