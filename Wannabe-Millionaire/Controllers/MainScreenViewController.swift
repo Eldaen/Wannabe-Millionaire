@@ -10,9 +10,25 @@ import UIKit
 /// Контроллер главного меню
 final class MainScreenViewController: UIViewController {
 	
+	/// Состояния кнопки ПРОДОЛЖИТЬ
+	enum ContinueButtonState {
+		case on
+		case off
+		
+		var bool: Bool {
+			switch self {
+			case .off:
+				return true
+			default:
+				return false
+			}
+		}
+	}
+	
 	@IBOutlet weak var continueGameButton: UIButton!
 	@IBOutlet weak var newGameButton: UIButton!
 	@IBOutlet weak var recordsButton: UIButton!
+	@IBOutlet weak var stackView: UIStackView!
 	
 	/// Текущая незаконченная сессия
 	var activeSession: GameSession?
@@ -26,9 +42,7 @@ final class MainScreenViewController: UIViewController {
 	/// Конфигурирует кнопки
 	private func setupButtons() {
 		let height = newGameButton.frame.height - 5
-		continueGameButton.layer.cornerRadius = height / 2
-		newGameButton.layer.cornerRadius = height / 2
-		recordsButton.layer.cornerRadius = height / 2
+		_ = stackView.subviews.map { $0.layer.cornerRadius = height / 2	}
 	}
 	
 	/// Экшн кнопки продолжить игру
@@ -39,8 +53,6 @@ final class MainScreenViewController: UIViewController {
 		   let session = activeSession {
 			vc.session = session
 			navigationController?.pushViewController(vc, animated: true)
-		} else {
-			navigationController?.popViewController(animated: true)
 		}
 	}
 	
@@ -48,20 +60,15 @@ final class MainScreenViewController: UIViewController {
 	func checkSession() {
 		if let session = Game.shared.sessionCaretaker.resumeSession() {
 			activeSession = session
-			enableContinueButton()
+			setContinueButton(state: .on)
 		} else {
-			disableContinueButton()
+			setContinueButton(state: .off)
 		}
 	}
 	
 	/// Выключает кнопку Продолжить
-	func disableContinueButton() {
-		continueGameButton.isHidden = true
-	}
-	
-	/// Выключает кнопку Продолжить
-	func enableContinueButton() {
-		continueGameButton.isHidden = false
+	func setContinueButton(state: ContinueButtonState) {
+		continueGameButton.isHidden = state.bool
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

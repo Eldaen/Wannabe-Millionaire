@@ -112,6 +112,7 @@
                         <outlet property="continueGameButton" destination="w0f-vY-5eH" id="F9J-u9-QSb"/>
                         <outlet property="newGameButton" destination="fyx-hT-33S" id="oFf-DT-ffr"/>
                         <outlet property="recordsButton" destination="2tY-Nj-sXW" id="TkQ-B0-02P"/>
+                        <outlet property="stackView" destination="twL-u9-Q6j" id="ObD-hf-ji4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

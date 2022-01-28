@@ -30,9 +30,10 @@ final class ResultViewController: UIViewController {
 	
 	/// Выводит сообщение окончания игры
 	private func displayResult() {
+		Game.shared.sessionCaretaker.clearSession()
+		
 		if success {
 			resultLabel.text = "Поздравляю, вы победили!"
-			Game.shared.sessionCaretaker.clearSession()
 		} else {
 			resultLabel.text = "Игра окончена, попробуйте ещё раз и всё получится!"
 		}
@@ -41,6 +42,7 @@ final class ResultViewController: UIViewController {
 	
 	/// Выходим в главное меню
 	@IBAction func goToMainMenu(_ sender: Any) {
+		navigationController?.isNavigationBarHidden = false
 		navigationController?.popToRootViewController(animated: true)
 	}
 	
