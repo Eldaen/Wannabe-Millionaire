@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 
 /// Протокол делегата для инициации запуска новой игры
-protocol NewGameDelegate {
+protocol NewGameDelegate: AnyObject {
 	func startNewGame()
 }
 
