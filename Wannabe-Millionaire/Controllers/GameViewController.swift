@@ -119,14 +119,16 @@ final class GameViewController: UIViewController {
 				}
 			}
 		} completion: { [weak self] _ in
-			UIView.animate(withDuration: 0.2) { [weak self] in
+			UIView.animate(withDuration: 0.2, delay: 0.2) { [weak self] in
 				self?.questionTextField.text = question.text
 				self?.questionTextField.alpha = 1
-				
-				if let labels = self?.answerLabels.enumerated() {
-					for (index, label) in labels {
-						label.alpha = 1
-						label.text = question.answerOptions[index]
+			} completion: { [weak self] _ in
+				UIView.animate(withDuration: 0.3) {
+					if let labels = self?.answerLabels.enumerated() {
+						for (index, label) in labels {
+							label.alpha = 1
+							label.text = question.answerOptions[index]
+						}
 					}
 				}
 			}

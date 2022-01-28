@@ -47,6 +47,7 @@ final class ResultViewController: UIViewController {
 	/// Запускаем новую игру
 	@IBAction func startNewGame(_ sender: Any) {
 		delegate?.startNewGame()
+		navigationController?.isNavigationBarHidden = false
 		navigationController?.popViewController(animated: true)
 	}
 }
