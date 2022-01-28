@@ -8,7 +8,7 @@
 import Foundation
 
 /// Структура для хранения данных о текущей игре
-struct GameSession {
+struct GameSession: Codable {
 	
 	/// Номер текущего вопроса
 	var currentQuestionId: Int = 0 {

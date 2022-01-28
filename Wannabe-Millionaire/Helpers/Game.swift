@@ -20,6 +20,9 @@ final class Game {
 	/// Cервис для сохранения и загрузки рекордов
 	private let recordsCaretaker = RecordsCaretaker()
 	
+	/// Сервис по сохранению игровой сессии
+	let sessionCaretaker = GameSessionCaretaker()
+	
 	static let shared = Game()
 	
 	private init() {

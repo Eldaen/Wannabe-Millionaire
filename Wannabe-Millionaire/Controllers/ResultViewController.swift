@@ -32,6 +32,7 @@ final class ResultViewController: UIViewController {
 	private func displayResult() {
 		if success {
 			resultLabel.text = "Поздравляю, вы победили!"
+			Game.shared.sessionCaretaker.clearSession()
 		} else {
 			resultLabel.text = "Игра окончена, попробуйте ещё раз и всё получится!"
 		}

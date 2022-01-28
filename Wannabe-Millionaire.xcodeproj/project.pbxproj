@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D084B43227A2E1C200534E6D /* HallHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43127A2E1C200534E6D /* HallHelpViewController.swift */; };
+		D084B43427A3DD7400534E6D /* GameSessionCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43327A3DD7400534E6D /* GameSessionCaretaker.swift */; };
 		D0E9402A27A150B0005A2879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402927A150B0005A2879 /* AppDelegate.swift */; };
 		D0E9402C27A150B0005A2879 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402B27A150B0005A2879 /* SceneDelegate.swift */; };
 		D0E9402E27A150B0005A2879 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402D27A150B0005A2879 /* MainScreenViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		D084B43127A2E1C200534E6D /* HallHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallHelpViewController.swift; sourceTree = "<group>"; };
+		D084B43327A3DD7400534E6D /* GameSessionCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionCaretaker.swift; sourceTree = "<group>"; };
 		D0E9402627A150B0005A2879 /* Wannabe-Millionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wannabe-Millionaire.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E9402927A150B0005A2879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0E9402B27A150B0005A2879 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				D0E9405327A2909E005A2879 /* Game.swift */,
 				D0E9405527A29D9C005A2879 /* RecordsCaretaker.swift */,
 				D0E9405727A29E76005A2879 /* GameSession.swift */,
+				D084B43327A3DD7400534E6D /* GameSessionCaretaker.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				D0E9405C27A2BB60005A2879 /* HallHelpClue.swift in Sources */,
 				D0E9405427A2909E005A2879 /* Game.swift in Sources */,
 				D0E9403F27A152C7005A2879 /* GameViewController.swift in Sources */,
+				D084B43427A3DD7400534E6D /* GameSessionCaretaker.swift in Sources */,
 				D0E9405227A28F48005A2879 /* Record.swift in Sources */,
 				D0E9404427A15D38005A2879 /* UIViewOutline.swift in Sources */,
 				D0E9402E27A150B0005A2879 /* MainScreenViewController.swift in Sources */,

@@ -18,13 +18,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="twL-u9-Q6j">
-                                <rect key="frame" x="87" y="515" width="240" height="126"/>
+                                <rect key="frame" x="77" y="482.5" width="260" height="191"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0f-vY-5eH">
+                                        <rect key="frame" x="20" y="8" width="220" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="QTA-f9-UZi"/>
+                                            <constraint firstAttribute="width" constant="220" id="edL-Zv-NGc"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Продолжить" titleAlignment="center">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="continueTheGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x2t-cj-qgF"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyx-hT-33S">
-                                        <rect key="frame" x="20" y="8" width="200" height="45"/>
+                                        <rect key="frame" x="20" y="73" width="220" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="WcC-6n-HJj"/>
-                                            <constraint firstAttribute="width" constant="200" id="YNR-bC-imA"/>
+                                            <constraint firstAttribute="width" constant="220" id="YNR-bC-imA"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -40,12 +63,11 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tpd-lM-UkZ"/>
-                                            <segue destination="Qlb-AP-YE7" kind="show" id="tGU-1z-v32"/>
+                                            <segue destination="Qlb-AP-YE7" kind="show" id="ZVw-yR-oY2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tY-Nj-sXW">
-                                        <rect key="frame" x="20" y="73" width="200" height="45"/>
+                                        <rect key="frame" x="20" y="138" width="220" height="45"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Рекорды" titleAlignment="center">
@@ -60,8 +82,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="showRecords:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gsO-bW-Dyh"/>
-                                            <segue destination="UIe-Pq-eBi" kind="show" id="9mq-BX-Cmp"/>
+                                            <segue destination="UIe-Pq-eBi" kind="show" id="8T8-Jm-dsa"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -72,7 +93,7 @@
                                 <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="20"/>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kbc-d1-uhy">
-                                <rect key="frame" x="-75" y="210" width="564" height="251"/>
+                                <rect key="frame" x="-75" y="222.5" width="564" height="251"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -81,13 +102,14 @@
                             <constraint firstItem="kbc-d1-uhy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3bK-J1-55y"/>
                             <constraint firstItem="twL-u9-Q6j" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="130" id="EUV-hO-sLr"/>
                             <constraint firstItem="twL-u9-Q6j" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QVP-QS-IXe"/>
-                            <constraint firstItem="kbc-d1-uhy" firstAttribute="bottom" secondItem="twL-u9-Q6j" secondAttribute="bottom" constant="-180" id="o5F-hE-j5v"/>
+                            <constraint firstItem="kbc-d1-uhy" firstAttribute="bottom" secondItem="twL-u9-Q6j" secondAttribute="bottom" constant="-200" id="o5F-hE-j5v"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ih3-ZY-ccs">
                         <barButtonItem key="backBarButtonItem" title="На главную" id="Byw-wq-0sM"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="continueGameButton" destination="w0f-vY-5eH" id="F9J-u9-QSb"/>
                         <outlet property="newGameButton" destination="fyx-hT-33S" id="oFf-DT-ffr"/>
                         <outlet property="recordsButton" destination="2tY-Nj-sXW" id="TkQ-B0-02P"/>
                     </connections>
@@ -148,7 +170,7 @@
         <!--Game View Controller-->
         <scene sceneID="aVv-IX-Kqa">
             <objects>
-                <viewController id="Qlb-AP-YE7" customClass="GameViewController" customModule="Wannabe_Millionaire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" id="Qlb-AP-YE7" customClass="GameViewController" customModule="Wannabe_Millionaire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oUS-We-vMc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -686,7 +708,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rZf-J0-o6f"/>
                                             <action selector="startNewGame:" destination="plW-Ph-2Hj" eventType="touchUpInside" id="taA-Gq-yCb"/>
                                         </connections>
                                     </button>
@@ -707,7 +728,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="goToMainMenu:" destination="plW-Ph-2Hj" eventType="touchUpInside" id="zFj-yH-VhK"/>
-                                            <action selector="showRecords:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wuh-lB-GxL"/>
                                         </connections>
                                     </button>
                                 </subviews>

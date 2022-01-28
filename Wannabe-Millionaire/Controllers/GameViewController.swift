@@ -41,6 +41,7 @@ final class GameViewController: UIViewController {
         super.viewDidLoad()
 		loadQuestions()
 		startTheGame()
+		disableUsedClues()
     }
 	
 	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -62,6 +63,8 @@ final class GameViewController: UIViewController {
 					break
 				}
 			}
+			
+			Game.shared.sessionCaretaker.save(session)
 		}
 	}
 	
@@ -101,9 +104,8 @@ final class GameViewController: UIViewController {
 	
 	/// Запускает игру
 	private func startTheGame() {
-		if let question = questions.first {
-			displayQuestion(question)
-		}
+		let question = questions[session.currentQuestionId]
+		displayQuestion(question)
 	}
 	
 	/// Заполняет поля вопроса
@@ -135,6 +137,7 @@ final class GameViewController: UIViewController {
 	private func nextQuestion() {
 		session.nextQuestion()
 		session.increaseScore()
+		Game.shared.sessionCaretaker.save(session)
 		
 		let questionId = session.currentQuestionId
 		
@@ -284,6 +287,15 @@ final class GameViewController: UIViewController {
 		for clue in clueCollection {
 			if let image = clue.subviews.first {
 				image.tintColor = .white
+			}
+		}
+	}
+	
+	/// Отмечает подсказки как использованные после загрузки сессии
+	private func disableUsedClues() {
+		for clue in session.usedClues {
+			if let clue = Clues(rawValue: clue) {
+				showClueAsUsed(clue)
 			}
 		}
 	}
