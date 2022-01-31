@@ -101,7 +101,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="dXN-YI-mIY" kind="show" id="qD2-D2-V3U"/>
+                                            <segue destination="dXN-YI-mIY" kind="show" identifier="SettingsController" id="qD2-D2-V3U"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -220,19 +220,30 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Настройки применятся, только если нет активной игры!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSF-X6-tzR">
+                                <rect key="frame" x="57" y="503.5" width="300" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="liu-Xr-33x"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="03h-gP-6nN"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Lp5-S5-Rmd" firstAttribute="centerX" secondItem="aUZ-CN-TNO" secondAttribute="centerX" id="0nd-54-swn"/>
                             <constraint firstItem="Lp5-S5-Rmd" firstAttribute="centerY" secondItem="aUZ-CN-TNO" secondAttribute="centerY" id="5sg-UJ-Bm8"/>
+                            <constraint firstItem="XSF-X6-tzR" firstAttribute="centerX" secondItem="aUZ-CN-TNO" secondAttribute="centerX" id="Cdc-dH-lZL"/>
+                            <constraint firstItem="XSF-X6-tzR" firstAttribute="top" secondItem="Lp5-S5-Rmd" secondAttribute="bottom" constant="40" id="KaL-uW-MP7"/>
                             <constraint firstItem="Aay-g9-ShZ" firstAttribute="centerX" secondItem="aUZ-CN-TNO" secondAttribute="centerX" id="m6m-sz-Nwn"/>
                             <constraint firstItem="Lp5-S5-Rmd" firstAttribute="top" secondItem="Aay-g9-ShZ" secondAttribute="bottom" constant="36.5" id="naO-TK-oq6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lr5-km-O3B"/>
                     <connections>
-                        <outlet property="segmentControl" destination="Lp5-S5-Rmd" id="rkX-jQ-h9T"/>
+                        <outlet property="segmentedControl" destination="Lp5-S5-Rmd" id="rkX-jQ-h9T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3R-Vh-xiA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

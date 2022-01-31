@@ -13,6 +13,11 @@ protocol NewGameDelegate: AnyObject {
 	func startNewGame()
 }
 
+/// Протокол стратегии задания вопросов
+protocol QuestionOrderStrategy {
+	func loadQuestions(for: GameSession) -> [Question]
+}
+
 /// Основной контроллер игры
 final class GameViewController: UIViewController {
 	
@@ -28,18 +33,25 @@ final class GameViewController: UIViewController {
 	@IBOutlet var answerButtons: [UIView]!
 	@IBOutlet var answerLabels: [UILabel]!
 	
-	/// Сервис загрузки вопросов
-	let questionsService = QuestionsService()
-	
 	/// Массив вопросов
 	var questions: [Question] = []
 	
 	/// Текущая сессия игры
 	var session = GameSession()
 	
+	/// Стратегия задачи вопросов
+	private var questionOrderStrategy: QuestionOrderStrategy {
+		switch session.currentQuestionsOrder {
+		case .successively:
+			return SuccessivelyOrderStrategy()
+		case.random:
+			return RandomOrderStrategy()
+		}
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-		loadQuestions()
+		questions = questionOrderStrategy.loadQuestions(for: session)
 		startTheGame()
 		disableUsedClues()
     }
@@ -72,7 +84,11 @@ final class GameViewController: UIViewController {
 	
 	/// Проверяет правильность ответа
 	private func checkAnswer(for tag: Int) {
-		if questions[session.currentQuestionId].checkAnswer(tag) {
+		let question = questions[session.currentQuestionArrayId]
+		
+		if question.checkAnswer(tag) {
+			session.checkQuestionAsAsked(id: question.id)
+			
 			animateAnswer(for: tag, result: true) { [weak self] in
 				self?.cleanClues()
 				self?.nextQuestion()
@@ -97,14 +113,10 @@ final class GameViewController: UIViewController {
 		}
 	}
 	
-	/// Загружает данные вопросов
-	private func loadQuestions() {
-		questions = questionsService.loadQuestions()
-	}
-	
 	/// Запускает игру
 	private func startTheGame() {
-		let question = questions[session.currentQuestionId]
+		let question = questions[session.currentQuestionArrayId]
+		session.currentlyAsking(question: question.id)
 		displayQuestion(question)
 	}
 	
@@ -138,10 +150,10 @@ final class GameViewController: UIViewController {
 	/// Переводит игру к следующему вопросу
 	private func nextQuestion() {
 		session.nextQuestion()
-		session.increaseScore()
-		Game.shared.sessionCaretaker.save(session)
 		
-		let questionId = session.currentQuestionId
+		let questionId = session.currentQuestionArrayId
+		session.currentlyAsking(question: questions[questionId].id)
+		Game.shared.sessionCaretaker.save(session)
 		
 		if questions.count > questionId {
 			displayQuestion(questions[questionId])
@@ -186,7 +198,7 @@ final class GameViewController: UIViewController {
 			return
 		}
 		
-		let clue = questions[session.currentQuestionId].fiftyFiftyClue
+		let clue = questions[session.currentQuestionArrayId].fiftyFiftyClue
 		
 		UIView.animate(withDuration: 0.4) { [weak self] in
 			for id in clue {
@@ -205,7 +217,7 @@ final class GameViewController: UIViewController {
 			return
 		}
 		
-		let clue = questions[session.currentQuestionId].callFriendClue
+		let clue = questions[session.currentQuestionArrayId].callFriendClue
 		
 		UIView.animate(withDuration: 0.4) { [weak self] in
 			self?.answerButtons[clue].backgroundColor = .orange
@@ -228,7 +240,7 @@ final class GameViewController: UIViewController {
 		if session.currentQuestionClues.contains(Clues.fiftyFifty.rawValue) {
 			key = .half
 			halfResults = true
-			removedResults = questions[session.currentQuestionId].fiftyFiftyClue
+			removedResults = questions[session.currentQuestionArrayId].fiftyFiftyClue
 		} else {
 			key = .full
 			halfResults = false
@@ -237,7 +249,7 @@ final class GameViewController: UIViewController {
 		if let vc = self.storyboard?.instantiateViewController(
 			withIdentifier: "HallHelpViewController"
 		) as? HallHelpViewController {
-			vc.clueData = questions[session.currentQuestionId].getHallHelp(for: key)
+			vc.clueData = questions[session.currentQuestionArrayId].getHallHelp(for: key)
 			vc.halfResults = halfResults
 			vc.removedAnswers = removedResults
 			present(vc, animated: true, completion: nil)
@@ -311,7 +323,7 @@ extension GameViewController: NewGameDelegate {
 		questions = []
 		clearCluesButtons()
 		
-		loadQuestions()
+		questions = questionOrderStrategy.loadQuestions(for: session)
 		startTheGame()
 	}
 }

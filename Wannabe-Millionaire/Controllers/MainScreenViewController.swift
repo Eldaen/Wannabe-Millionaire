@@ -7,6 +7,13 @@
 
 import UIKit
 
+/// Протокол для установки настроек
+protocol ConfigurableDelegate: AnyObject {
+	
+	/// Передаёт настройки игры
+	func setSettings(order: Game.QuestionsOrder)
+}
+
 /// Контроллер главного меню
 final class MainScreenViewController: UIViewController {
 	
@@ -43,6 +50,14 @@ final class MainScreenViewController: UIViewController {
 		super.viewWillAppear(animated)
 		checkSession()
 	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "SettingsController" {
+			if let vc = segue.destination as? SettingsViewController {
+				vc.delegate = self
+			}
+		}
+	}
 
 	/// Конфигурирует кнопки
 	private func setupButtons() {
@@ -55,7 +70,8 @@ final class MainScreenViewController: UIViewController {
 		if let vc = self.storyboard?.instantiateViewController(
 			withIdentifier: "GameViewController"
 		) as? GameViewController,
-		   let session = activeSession {
+		   var session = activeSession {
+			session.resetArrayCount()
 			vc.session = session
 			navigationController?.pushViewController(vc, animated: true)
 		}
@@ -74,6 +90,17 @@ final class MainScreenViewController: UIViewController {
 	/// Выключает кнопку Продолжить
 	func setContinueButton(state: ContinueButtonState) {
 		continueGameButton.isHidden = state.bool
+	}
+}
+
+// MARK: - ConfigurableDelegate
+
+extension MainScreenViewController: ConfigurableDelegate {
+	func setSettings(order: Game.QuestionsOrder) {
+		
+		// Настройки будут меняться, только если нет активной игры
+		guard Game.shared.sessionCaretaker.resumeSession() == nil else { return }
+		Game.shared.order = order
 	}
 }
 

@@ -10,6 +10,8 @@
 		D084B43227A2E1C200534E6D /* HallHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43127A2E1C200534E6D /* HallHelpViewController.swift */; };
 		D084B43427A3DD7400534E6D /* GameSessionCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43327A3DD7400534E6D /* GameSessionCaretaker.swift */; };
 		D084B43627A7E42900534E6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43527A7E42900534E6D /* SettingsViewController.swift */; };
+		D084B43927A7EC7900534E6D /* SuccessivelyOrderStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43827A7EC7900534E6D /* SuccessivelyOrderStrategy.swift */; };
+		D084B43B27A7EC8600534E6D /* RandomOrderStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43A27A7EC8600534E6D /* RandomOrderStrategy.swift */; };
 		D0E9402A27A150B0005A2879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402927A150B0005A2879 /* AppDelegate.swift */; };
 		D0E9402C27A150B0005A2879 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402B27A150B0005A2879 /* SceneDelegate.swift */; };
 		D0E9402E27A150B0005A2879 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402D27A150B0005A2879 /* MainScreenViewController.swift */; };
@@ -34,6 +36,8 @@
 		D084B43127A2E1C200534E6D /* HallHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallHelpViewController.swift; sourceTree = "<group>"; };
 		D084B43327A3DD7400534E6D /* GameSessionCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionCaretaker.swift; sourceTree = "<group>"; };
 		D084B43527A7E42900534E6D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D084B43827A7EC7900534E6D /* SuccessivelyOrderStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessivelyOrderStrategy.swift; sourceTree = "<group>"; };
+		D084B43A27A7EC8600534E6D /* RandomOrderStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomOrderStrategy.swift; sourceTree = "<group>"; };
 		D0E9402627A150B0005A2879 /* Wannabe-Millionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wannabe-Millionaire.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E9402927A150B0005A2879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0E9402B27A150B0005A2879 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D084B43727A7EC5500534E6D /* QuestionOrderStrategy */ = {
+			isa = PBXGroup;
+			children = (
+				D084B43827A7EC7900534E6D /* SuccessivelyOrderStrategy.swift */,
+				D084B43A27A7EC8600534E6D /* RandomOrderStrategy.swift */,
+			);
+			path = QuestionOrderStrategy;
+			sourceTree = "<group>";
+		};
 		D0E9401D27A150B0005A2879 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +147,7 @@
 		D0E9404C27A19CAB005A2879 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D084B43727A7EC5500534E6D /* QuestionOrderStrategy */,
 				D0E9404D27A19CBE005A2879 /* QuestionsService.swift */,
 				D0E9404F27A19D55005A2879 /* questions.json */,
 				D0E9405327A2909E005A2879 /* Game.swift */,
@@ -223,6 +237,7 @@
 				D0E9403F27A152C7005A2879 /* GameViewController.swift in Sources */,
 				D084B43427A3DD7400534E6D /* GameSessionCaretaker.swift in Sources */,
 				D0E9405227A28F48005A2879 /* Record.swift in Sources */,
+				D084B43B27A7EC8600534E6D /* RandomOrderStrategy.swift in Sources */,
 				D0E9404427A15D38005A2879 /* UIViewOutline.swift in Sources */,
 				D0E9402E27A150B0005A2879 /* MainScreenViewController.swift in Sources */,
 				D0E9402A27A150B0005A2879 /* AppDelegate.swift in Sources */,
@@ -231,6 +246,7 @@
 				D084B43627A7E42900534E6D /* SettingsViewController.swift in Sources */,
 				D084B43227A2E1C200534E6D /* HallHelpViewController.swift in Sources */,
 				D0E9402C27A150B0005A2879 /* SceneDelegate.swift in Sources */,
+				D084B43927A7EC7900534E6D /* SuccessivelyOrderStrategy.swift in Sources */,
 				D0E9405827A29E76005A2879 /* GameSession.swift in Sources */,
 				D0E9405627A29D9C005A2879 /* RecordsCaretaker.swift in Sources */,
 			);
