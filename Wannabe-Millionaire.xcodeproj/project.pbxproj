@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D084B43227A2E1C200534E6D /* HallHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43127A2E1C200534E6D /* HallHelpViewController.swift */; };
 		D084B43427A3DD7400534E6D /* GameSessionCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43327A3DD7400534E6D /* GameSessionCaretaker.swift */; };
+		D084B43627A7E42900534E6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43527A7E42900534E6D /* SettingsViewController.swift */; };
 		D0E9402A27A150B0005A2879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402927A150B0005A2879 /* AppDelegate.swift */; };
 		D0E9402C27A150B0005A2879 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402B27A150B0005A2879 /* SceneDelegate.swift */; };
 		D0E9402E27A150B0005A2879 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402D27A150B0005A2879 /* MainScreenViewController.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		D084B43127A2E1C200534E6D /* HallHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallHelpViewController.swift; sourceTree = "<group>"; };
 		D084B43327A3DD7400534E6D /* GameSessionCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionCaretaker.swift; sourceTree = "<group>"; };
+		D084B43527A7E42900534E6D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D0E9402627A150B0005A2879 /* Wannabe-Millionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wannabe-Millionaire.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E9402927A150B0005A2879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0E9402B27A150B0005A2879 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				D0E9404727A18CA1005A2879 /* RecordsTableViewController.swift */,
 				D0E9405927A2A113005A2879 /* ResultViewController.swift */,
 				D084B43127A2E1C200534E6D /* HallHelpViewController.swift */,
+				D084B43527A7E42900534E6D /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				D0E9402A27A150B0005A2879 /* AppDelegate.swift in Sources */,
 				D0E9404E27A19CBE005A2879 /* QuestionsService.swift in Sources */,
 				D0E9404B27A19BDD005A2879 /* Question.swift in Sources */,
+				D084B43627A7E42900534E6D /* SettingsViewController.swift in Sources */,
 				D084B43227A2E1C200534E6D /* HallHelpViewController.swift in Sources */,
 				D0E9402C27A150B0005A2879 /* SceneDelegate.swift in Sources */,
 				D0E9405827A29E76005A2879 /* GameSession.swift in Sources */,
