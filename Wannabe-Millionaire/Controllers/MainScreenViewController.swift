@@ -38,6 +38,11 @@ final class MainScreenViewController: UIViewController {
 		checkSession()
 		setupButtons()
 	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		checkSession()
+	}
 
 	/// Конфигурирует кнопки
 	private func setupButtons() {
@@ -69,11 +74,6 @@ final class MainScreenViewController: UIViewController {
 	/// Выключает кнопку Продолжить
 	func setContinueButton(state: ContinueButtonState) {
 		continueGameButton.isHidden = state.bool
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		checkSession()
 	}
 }
 
