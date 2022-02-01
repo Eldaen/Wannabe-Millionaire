@@ -508,26 +508,37 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="VeL-cR-vL6">
-                                <rect key="frame" x="-75" y="161" width="564" height="251"/>
+                                <rect key="frame" x="-75" y="141" width="564" height="251"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вопрос - 1, Прогресс - 0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niB-4Q-8ES">
+                                <rect key="frame" x="0.0" y="411.5" width="414" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JWx-gv-Hxn"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="m5C-yw-JKM" firstAttribute="leading" secondItem="JWx-gv-Hxn" secondAttribute="leading" constant="20" id="8R5-1Q-tJq"/>
                             <constraint firstItem="cdA-qu-5SC" firstAttribute="leading" secondItem="JWx-gv-Hxn" secondAttribute="leading" constant="20" id="8px-h4-vfC"/>
+                            <constraint firstItem="niB-4Q-8ES" firstAttribute="centerX" secondItem="oUS-We-vMc" secondAttribute="centerX" id="ALe-kw-BcR"/>
                             <constraint firstItem="JWx-gv-Hxn" firstAttribute="bottom" secondItem="m5C-yw-JKM" secondAttribute="bottom" constant="60" id="FPb-Wa-Kmw"/>
+                            <constraint firstItem="niB-4Q-8ES" firstAttribute="leading" secondItem="JWx-gv-Hxn" secondAttribute="leading" id="KZz-rf-RpV"/>
+                            <constraint firstItem="UA7-y1-WfW" firstAttribute="top" secondItem="niB-4Q-8ES" secondAttribute="bottom" constant="20" id="Qwn-wg-OyP"/>
                             <constraint firstItem="JWx-gv-Hxn" firstAttribute="trailing" secondItem="m5C-yw-JKM" secondAttribute="trailing" constant="20" id="UY1-Hc-uFh"/>
                             <constraint firstItem="cdA-qu-5SC" firstAttribute="top" secondItem="t50-XT-GT9" secondAttribute="bottom" constant="20" id="eZI-M6-edf"/>
                             <constraint firstItem="m5C-yw-JKM" firstAttribute="top" secondItem="cdA-qu-5SC" secondAttribute="bottom" constant="30" id="oBI-ex-CnO"/>
+                            <constraint firstItem="JWx-gv-Hxn" firstAttribute="trailing" secondItem="niB-4Q-8ES" secondAttribute="trailing" id="rYs-bg-CjD"/>
                             <constraint firstItem="VeL-cR-vL6" firstAttribute="centerX" secondItem="oUS-We-vMc" secondAttribute="centerX" id="stT-zy-vS4"/>
-                            <constraint firstItem="t50-XT-GT9" firstAttribute="top" secondItem="VeL-cR-vL6" secondAttribute="bottom" constant="40" id="tcA-Sd-R2j"/>
+                            <constraint firstItem="t50-XT-GT9" firstAttribute="top" secondItem="VeL-cR-vL6" secondAttribute="bottom" constant="60" id="tcA-Sd-R2j"/>
                             <constraint firstItem="JWx-gv-Hxn" firstAttribute="trailing" secondItem="cdA-qu-5SC" secondAttribute="trailing" constant="20" id="tq3-wl-qqa"/>
                             <constraint firstItem="t50-XT-GT9" firstAttribute="centerX" secondItem="oUS-We-vMc" secondAttribute="centerX" id="wv5-5Q-KuL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="j7f-Ss-kOS"/>
                     <connections>
+                        <outlet property="progressLabel" destination="niB-4Q-8ES" id="9Fo-OM-PRX"/>
                         <outlet property="questionTextField" destination="jiV-LP-kaW" id="Bhq-eM-zJx"/>
                         <outletCollection property="answerButtons" destination="yWP-NJ-CYj" collectionClass="NSMutableArray" id="MYk-DJ-GA7"/>
                         <outletCollection property="answerButtons" destination="E7U-aT-rsu" collectionClass="NSMutableArray" id="kp6-QU-y6h"/>

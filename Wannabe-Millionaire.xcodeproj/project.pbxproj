@@ -12,6 +12,7 @@
 		D084B43627A7E42900534E6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43527A7E42900534E6D /* SettingsViewController.swift */; };
 		D084B43927A7EC7900534E6D /* SuccessivelyOrderStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43827A7EC7900534E6D /* SuccessivelyOrderStrategy.swift */; };
 		D084B43B27A7EC8600534E6D /* RandomOrderStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43A27A7EC8600534E6D /* RandomOrderStrategy.swift */; };
+		D084B43D27A9359300534E6D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43C27A9359300534E6D /* Observable.swift */; };
 		D0E9402A27A150B0005A2879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402927A150B0005A2879 /* AppDelegate.swift */; };
 		D0E9402C27A150B0005A2879 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402B27A150B0005A2879 /* SceneDelegate.swift */; };
 		D0E9402E27A150B0005A2879 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9402D27A150B0005A2879 /* MainScreenViewController.swift */; };
@@ -38,6 +39,7 @@
 		D084B43527A7E42900534E6D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D084B43827A7EC7900534E6D /* SuccessivelyOrderStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessivelyOrderStrategy.swift; sourceTree = "<group>"; };
 		D084B43A27A7EC8600534E6D /* RandomOrderStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomOrderStrategy.swift; sourceTree = "<group>"; };
+		D084B43C27A9359300534E6D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D0E9402627A150B0005A2879 /* Wannabe-Millionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wannabe-Millionaire.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E9402927A150B0005A2879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0E9402B27A150B0005A2879 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				D0E9405527A29D9C005A2879 /* RecordsCaretaker.swift */,
 				D0E9405727A29E76005A2879 /* GameSession.swift */,
 				D084B43327A3DD7400534E6D /* GameSessionCaretaker.swift */,
+				D084B43C27A9359300534E6D /* Observable.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				D084B43627A7E42900534E6D /* SettingsViewController.swift in Sources */,
 				D084B43227A2E1C200534E6D /* HallHelpViewController.swift in Sources */,
 				D0E9402C27A150B0005A2879 /* SceneDelegate.swift in Sources */,
+				D084B43D27A9359300534E6D /* Observable.swift in Sources */,
 				D084B43927A7EC7900534E6D /* SuccessivelyOrderStrategy.swift in Sources */,
 				D0E9405827A29E76005A2879 /* GameSession.swift in Sources */,
 				D0E9405627A29D9C005A2879 /* RecordsCaretaker.swift in Sources */,

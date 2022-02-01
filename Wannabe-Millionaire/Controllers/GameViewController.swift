@@ -32,6 +32,7 @@ final class GameViewController: UIViewController {
 	@IBOutlet weak var questionTextField: UILabel!
 	@IBOutlet var answerButtons: [UIView]!
 	@IBOutlet var answerLabels: [UILabel]!
+	@IBOutlet weak var progressLabel: UILabel!
 	
 	/// Массив вопросов
 	var questions: [Question] = []
@@ -49,11 +50,28 @@ final class GameViewController: UIViewController {
 		}
 	}
 	
+	init() {
+		super.init(nibName: nil, bundle: nil)
+		observeQuestionCount()
+	}
+	
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		observeQuestionCount()
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		questions = questionOrderStrategy.loadQuestions(for: session)
+		
+		if session.questionsCount == nil {
+			session.questionsCount = questions.count
+		}
+		
 		startTheGame()
 		disableUsedClues()
+		observeQuestionCount()
+		setupProgress()
     }
 	
 	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -313,9 +331,27 @@ final class GameViewController: UIViewController {
 			}
 		}
 	}
+	
+	private func observeQuestionCount() {
+		session.questionCountNumber.addObserver(self, options: [.new], closure: { [weak self] (number, _) in
+			guard let count = self?.session.questionsCount else { return }
+			
+			let progress = Double(number - 1) / Double(count) * 100
+			self?.progressLabel.text = "Вопрос: \(number), Прогресс - \(Int(progress))%"
+			self?.progressLabel.layoutIfNeeded()
+		})
+	}
+	
+	func setupProgress() {
+		guard let count = session.questionsCount else { return }
+		
+		let progress = Double(session.questionCountNumberInt - 1) / Double(count) * 100
+		progressLabel.text = "Вопрос: \(session.questionCountNumberInt), Прогресс - \(Int(progress))%"
+		progressLabel.layoutIfNeeded()
+	}
 }
 
-// MARK: NewGameDelegate
+// MARK: - NewGameDelegate
 
 extension GameViewController: NewGameDelegate {
 	func startNewGame() {

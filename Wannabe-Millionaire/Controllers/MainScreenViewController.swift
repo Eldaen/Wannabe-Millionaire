@@ -70,7 +70,7 @@ final class MainScreenViewController: UIViewController {
 		if let vc = self.storyboard?.instantiateViewController(
 			withIdentifier: "GameViewController"
 		) as? GameViewController,
-		   var session = activeSession {
+		   let session = activeSession {
 			session.resetArrayCount()
 			vc.session = session
 			navigationController?.pushViewController(vc, animated: true)
