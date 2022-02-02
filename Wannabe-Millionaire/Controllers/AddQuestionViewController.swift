@@ -20,6 +20,8 @@ final class AddQuestionViewController: UIViewController {
 	
 	let careTaker = Caretaker(key: "questions")
 	
+	let builder = AddQuestionsBuilder()
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		configureTableView()
@@ -39,23 +41,28 @@ final class AddQuestionViewController: UIViewController {
 	}
 	
 	@objc func questionTextDidChange(sender: UITextField) {
-		guard sender.text != nil else { return }
+		guard let text = sender.text else { return }
+		builder.setText(text, index: sender.tag)
 	}
 	
 	@objc func correctAnswerDidChange(sender: UITextField) {
-		guard sender.text != nil else { return }
+		guard let text = sender.text else { return }
+		builder.setCorrectAnswer(text, index: sender.tag)
 	}
 	
 	@objc func answerTwoDidChange(sender: UITextField) {
-		guard sender.text != nil else { return }
+		guard let text = sender.text else { return }
+		builder.setAnswerTwo(text, index: sender.tag)
 	}
 	
 	@objc func answerThreeDidChange(sender: UITextField) {
-		guard sender.text != nil else { return }
+		guard let text = sender.text else { return }
+		builder.setAnswerThree(text, index: sender.tag)
 	}
 	
 	@objc func answerFourDidChange(sender: UITextField) {
-		guard sender.text != nil else { return }
+		guard let text = sender.text else { return }
+		builder.setAnswerFour(text, index: sender.tag)
 	}
 }
 
@@ -82,31 +89,31 @@ extension AddQuestionViewController: UITableViewDataSource {
 		cell.questionText.addTarget(
 			self,
 			action: #selector(self.questionTextDidChange(sender:)),
-			for: UIControl.Event.editingChanged
+			for: UIControl.Event.editingDidEnd
 		)
 		
 		cell.correctAnswer.addTarget(
 			self,
-			action: #selector(self.questionTextDidChange(sender:)),
-			for: UIControl.Event.editingChanged
+			action: #selector(self.correctAnswerDidChange(sender:)),
+			for: UIControl.Event.editingDidEnd
 		)
 		
 		cell.answerTwo.addTarget(
 			self,
-			action: #selector(self.questionTextDidChange(sender:)),
-			for: UIControl.Event.editingChanged
+			action: #selector(self.answerTwoDidChange(sender:)),
+			for: UIControl.Event.editingDidEnd
 		)
 		
 		cell.answerThree.addTarget(
 			self,
-			action: #selector(self.questionTextDidChange(sender:)),
-			for: UIControl.Event.editingChanged
+			action: #selector(self.answerThreeDidChange(sender:)),
+			for: UIControl.Event.editingDidEnd
 		)
 		
 		cell.answerFour.addTarget(
 			self,
-			action: #selector(self.questionTextDidChange(sender:)),
-			for: UIControl.Event.editingChanged
+			action: #selector(self.answerFourDidChange(sender:)),
+			for: UIControl.Event.editingDidEnd
 		)
 		
 		return cell

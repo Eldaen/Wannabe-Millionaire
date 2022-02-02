@@ -39,16 +39,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "478A509C-7AEA-4F08-B167-EFE287D5AE61"
+            uuid = "C449F2C9-7698-4BAF-BB2D-0FF2CA5348E8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Wannabe-Millionaire/Controllers/AddQuestionViewController.swift"
+            filePath = "Wannabe-Millionaire/Helpers/AddQuestionsBuilder.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "questionTextDidChange(sender:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "setAnswerFour(_:index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
