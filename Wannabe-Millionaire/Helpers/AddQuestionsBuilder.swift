@@ -17,12 +17,6 @@ final class AddQuestionsBuilder {
 	/// Данные о завершении конфигурации вопросов
 	var questionsCompletion: [Int: [String: Bool]] = [:]
 	
-	private var text: String?
-	private var correctAnswer: String?
-	private var answerTwo: String?
-	private var answerThree: String?
-	private var answerFour: String?
-	
 	func setText(_ text: String, index: Int) {
 		checkValidIndex(index)
 		questions[index].text = text

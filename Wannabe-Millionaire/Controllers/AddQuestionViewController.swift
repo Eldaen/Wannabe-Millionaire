@@ -18,8 +18,10 @@ final class AddQuestionViewController: UIViewController {
 	/// Кол-во секций в таблице
 	let sectionsCount = 1
 	
-	let careTaker = Caretaker(key: "questions")
+	/// Caretaker для сохранения пользовательских вопросов
+	let caretaker = QuestionsCaretaker(key: "questions")
 	
+	/// Билдер массива введённых пользователем вопросов
 	let builder = AddQuestionsBuilder()
 	
 	override func viewDidLoad() {
@@ -71,7 +73,7 @@ final class AddQuestionViewController: UIViewController {
 	
 	@IBAction func addQuestions(_ sender: Any) {
 		let questions = builder.build()
-		careTaker.save(questions)
+		caretaker.save(questions)
 	}
 }
 
