@@ -1,5 +1,5 @@
 //
-//  Caretaker.swift
+//  QuestionsCaretaker.swift.swift
 //  Wannabe-Millionaire
 //
 //  Created by Денис Сизов on 02.02.2022.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-/// Сaretaker класса GameSession, сохраняет и загружает прогресс в игре
-final class Caretaker {
+/// Сaretaker для пользовательских новостей
+final class QuestionsCaretaker {
 	
 	private let encoder = JSONEncoder()
 	private let decoder = JSONDecoder()
@@ -20,7 +20,7 @@ final class Caretaker {
 	}
 	
 	/// Сохраняет сессию
-	func save<T: Codable>(_ questions: T) {
+	func save(_ questions: [Question]) {
 		do {
 			let data = try self.encoder.encode(questions)
 			UserDefaults.standard.set(data, forKey: key)
@@ -30,12 +30,12 @@ final class Caretaker {
 	}
 	
 	/// Загружает сессию
-	func resumeSession<T: Codable>(for: T) -> T? {
+	func resumeSession() -> [Question]? {
 		guard let data = UserDefaults.standard.data(forKey: key) else {
 			return nil
 		}
 		do {
-			return try self.decoder.decode(T.self, from: data)
+			return try self.decoder.decode([Question].self, from: data)
 		} catch {
 			print(error)
 			return nil

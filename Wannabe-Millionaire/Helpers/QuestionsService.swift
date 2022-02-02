@@ -12,17 +12,23 @@ import Foundation
 /// - Один QuestionsService вполне мог бы отдавать вопросы как угодно вроде loadQuestions(state: .random)
 final class QuestionsService {
 	var questions: [Question] = []
+
+	/// Cервис для загрузки сохранённых пользователем вопросов
+	let caretaker = QuestionsCaretaker(key: "questions")
 	
 	/// Загружает вопросы последовательно
 	func loadQuestions() -> [Question] {
 		do {
 			try readQuestionsFile()
-			return questions
 		} catch {
 			print(error)
 		}
 		
-		return []
+		if let userQuestions: [Question] = caretaker.resumeSession() {
+			questions = questions + userQuestions
+		}
+		
+		return questions
 	}
 	
 	/// Загружает вопросы в случайном порядке

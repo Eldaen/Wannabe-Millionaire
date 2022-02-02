@@ -81,7 +81,7 @@ final class AddQuestionsBuilder {
 	
 	/// Создаёт пустой вопрос
 	private func createEmptyQuestion(with index: Int) -> Question {
-		return Question(id: index,
+		return Question(id: Int.random(in: 1000...10000),
 						text: "",
 						answerOptions: [],
 						correctAnswer: -1,
@@ -157,6 +157,7 @@ final class AddQuestionsBuilder {
 		return HallHelpClue(full: full, half: half)
 	}
 	
+	/// Отмечает, что переданное по ключу поле было заполнено
 	func complete(for index: Int, key: String) {
 		if let _ = questionsCompletion[index] {
 			questionsCompletion[index]?.updateValue(true, forKey: key)
