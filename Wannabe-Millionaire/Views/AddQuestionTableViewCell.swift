@@ -15,7 +15,6 @@ final class AddQuestionTableViewCell: UITableViewCell {
 	@IBOutlet weak var answerTwo: UITextField!
 	@IBOutlet weak var answerThree: UITextField!
 	@IBOutlet weak var answerFour: UITextField!
-	@IBOutlet weak var addButton: UIButton!
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()

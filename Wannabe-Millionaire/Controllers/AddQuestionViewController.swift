@@ -12,11 +12,13 @@ final class AddQuestionViewController: UIViewController {
 
 	@IBOutlet weak var tableView: UITableView!
 	
-	/// Массив вопросов
-	var questions: [Question] = []
-	
 	/// Кол-во форм для вопросов
 	var formsCount: Int = 1
+	
+	/// Кол-во секций в таблице
+	let sectionsCount = 1
+	
+	let careTaker = Caretaker(key: "questions")
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,26 @@ final class AddQuestionViewController: UIViewController {
 		tableView.reloadData()
 		tableView.scrollToBottom()
 	}
+	
+	@objc func questionTextDidChange(sender: UITextField) {
+		guard sender.text != nil else { return }
+	}
+	
+	@objc func correctAnswerDidChange(sender: UITextField) {
+		guard sender.text != nil else { return }
+	}
+	
+	@objc func answerTwoDidChange(sender: UITextField) {
+		guard sender.text != nil else { return }
+	}
+	
+	@objc func answerThreeDidChange(sender: UITextField) {
+		guard sender.text != nil else { return }
+	}
+	
+	@objc func answerFourDidChange(sender: UITextField) {
+		guard sender.text != nil else { return }
+	}
 }
 
 // MARK: - UITableViewDataSource
@@ -42,7 +64,7 @@ final class AddQuestionViewController: UIViewController {
 extension AddQuestionViewController: UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		1
+		sectionsCount
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,6 +76,38 @@ extension AddQuestionViewController: UITableViewDataSource {
 		else {
 			return UITableViewCell ()
 		}
+		
+		cell.tag = indexPath.row
+		
+		cell.questionText.addTarget(
+			self,
+			action: #selector(self.questionTextDidChange(sender:)),
+			for: UIControl.Event.editingChanged
+		)
+		
+		cell.correctAnswer.addTarget(
+			self,
+			action: #selector(self.questionTextDidChange(sender:)),
+			for: UIControl.Event.editingChanged
+		)
+		
+		cell.answerTwo.addTarget(
+			self,
+			action: #selector(self.questionTextDidChange(sender:)),
+			for: UIControl.Event.editingChanged
+		)
+		
+		cell.answerThree.addTarget(
+			self,
+			action: #selector(self.questionTextDidChange(sender:)),
+			for: UIControl.Event.editingChanged
+		)
+		
+		cell.answerFour.addTarget(
+			self,
+			action: #selector(self.questionTextDidChange(sender:)),
+			for: UIControl.Event.editingChanged
+		)
 		
 		return cell
 	}

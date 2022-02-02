@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Текст вопроса" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O5J-Ak-2Lw">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Текст вопроса" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O5J-Ak-2Lw">
                     <rect key="frame" x="8" y="592" width="398" height="68"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="68" id="r26-BY-zNA"/>
@@ -28,8 +28,11 @@
                             <real key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="addedQuestionText:" destination="iN0-l3-epB" eventType="editingDidEnd" id="lkr-pF-pkp"/>
+                    </connections>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Правильный ответ" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jy0-wV-v9X">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Правильный ответ" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jy0-wV-v9X">
                     <rect key="frame" x="8" y="680" width="398" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="0l4-xB-KVD"/>
@@ -44,8 +47,11 @@
                             <real key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="addedCorrectAnswer:" destination="iN0-l3-epB" eventType="editingDidEnd" id="lyq-8w-FGE"/>
+                    </connections>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="AddQuestionTableViewCell" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Вариант 2" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRJ-YM-uMw">
+                <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="AddQuestionTableViewCell" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Вариант 2" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRJ-YM-uMw">
                     <rect key="frame" x="8" y="734" width="398" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="9l9-sk-6js"/>
@@ -60,8 +66,11 @@
                             <real key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="addedAnswerTwo:" destination="iN0-l3-epB" eventType="editingDidEnd" id="Q9f-do-uUl"/>
+                    </connections>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Вариант 3" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mhM-ns-sXF">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Вариант 3" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mhM-ns-sXF">
                     <rect key="frame" x="8" y="788" width="398" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="na8-3k-0tP"/>
@@ -76,6 +85,9 @@
                             <real key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="addedAnswerThree:" destination="iN0-l3-epB" eventType="editingDidEnd" id="L5f-OX-aIr"/>
+                    </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите данные вопроса" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGC-X2-HTj">
                     <rect key="frame" x="106" y="16" width="202" height="560"/>
@@ -83,7 +95,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Вариант 4" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXI-fP-CXe">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Вариант 4" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXI-fP-CXe">
                     <rect key="frame" x="8" y="842" width="398" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="S7e-50-4xt"/>
@@ -98,6 +110,9 @@
                             <real key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="addedAnswerFour:" destination="iN0-l3-epB" eventType="editingDidEnd" id="fPR-Ng-b3g"/>
+                    </connections>
                 </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
