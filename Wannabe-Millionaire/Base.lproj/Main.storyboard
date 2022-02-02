@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DUv-XV-t3S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wbt-pb-v57">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -187,7 +187,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLD-E6-fgX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1834.7826086956522" y="416.51785714285711"/>
+            <point key="canvasLocation" x="1838" y="-34"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="QXq-oB-vYv">
@@ -248,7 +248,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3R-Vh-xiA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1840" y="1076"/>
+            <point key="canvasLocation" x="1838" y="627"/>
+        </scene>
+        <!--Add Question View Controller-->
+        <scene sceneID="Cmv-gt-wnj">
+            <objects>
+                <viewController id="Wbt-pb-v57" customClass="AddQuestionViewController" customModule="Wannabe_Millionaire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6j8-iN-uA4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ByG-97-tO4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="718"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1t-JM-JuA">
+                                <rect key="frame" x="107" y="791" width="200" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="znK-nW-ABv"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Добавить">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xYw-NV-DUA"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ByG-97-tO4" firstAttribute="top" secondItem="xYw-NV-DUA" secondAttribute="top" id="3gw-qt-Yuu"/>
+                            <constraint firstItem="ByG-97-tO4" firstAttribute="leading" secondItem="xYw-NV-DUA" secondAttribute="leading" id="6sO-bB-x0G"/>
+                            <constraint firstItem="C1t-JM-JuA" firstAttribute="centerX" secondItem="6j8-iN-uA4" secondAttribute="centerX" id="8N3-W7-JG4"/>
+                            <constraint firstItem="xYw-NV-DUA" firstAttribute="bottom" secondItem="C1t-JM-JuA" secondAttribute="bottom" constant="20" id="Cri-XV-E9i"/>
+                            <constraint firstItem="xYw-NV-DUA" firstAttribute="trailing" secondItem="ByG-97-tO4" secondAttribute="trailing" id="cx9-bw-R7Q"/>
+                            <constraint firstItem="xYw-NV-DUA" firstAttribute="bottom" secondItem="ByG-97-tO4" secondAttribute="bottom" constant="100" id="zXq-BR-e5l"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ByG-97-tO4" id="Oea-7a-pd6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YSD-zH-AA1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1838" y="1323"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="aVv-IX-Kqa">
@@ -555,7 +608,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVS-f5-c1a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1834.7826086956522" y="-305.35714285714283"/>
+            <point key="canvasLocation" x="1839" y="-717"/>
         </scene>
         <!--Hall Help View Controller-->
         <scene sceneID="Why-U5-TtF">
@@ -760,7 +813,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NDI-kU-VvL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2673.913043478261" y="-305.35714285714283"/>
+            <point key="canvasLocation" x="2651" y="-717"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="Cu7-rh-iI8">
@@ -870,7 +923,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rx8-GA-ebS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3532" y="-305"/>
+            <point key="canvasLocation" x="3510" y="-717"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yal-BB-Bup">
@@ -900,6 +953,9 @@
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
