@@ -11,13 +11,21 @@ import UIKit
 /// Билдер массива вопросов для добавления в программу
 final class AddQuestionsBuilder {
 	
-	enum Keys: String {
+	enum fieldsKeys: String {
 		case text
 		case correctAnswer
 		case first
 		case second
 		case third
 		case fourth
+	}
+	
+	enum CompletionKeys: String {
+		case text
+		case correctValue
+		case answerTwo
+		case answerThree
+		case answerFour
 	}
 	
 	/// Массив вопросов
@@ -28,28 +36,28 @@ final class AddQuestionsBuilder {
 	
 	func setText(_ text: String, index: Int) {
 		addText(for: index, key: .text, text: text)
-		complete(for: index, key: "text")
+		complete(for: index, key: .text)
 	}
 	
 	func setCorrectAnswer(_ text: String, index: Int) {
 		addText(for: index, key: .first, text: text)
 		addText(for: index, key: .correctAnswer, text: String(questions.count - 1))
-		complete(for: index, key: "correctValue")
+		complete(for: index, key: .correctValue)
 	}
 	
 	func setAnswerTwo(_ text: String, index: Int) {
 		addText(for: index, key: .second, text: text)
-		complete(for: index, key: "answerTwo")
+		complete(for: index, key: .answerTwo)
 	}
 	
 	func setAnswerThree(_ text: String, index: Int) {
 		addText(for: index, key: .third, text: text)
-		complete(for: index, key: "answerThree")
+		complete(for: index, key: .answerThree)
 	}
 	
 	func setAnswerFour(_ text: String, index: Int) {
 		addText(for: index, key: .fourth, text: text)
-		complete(for: index, key: "answerFour")
+		complete(for: index, key: .answerFour)
 	}
 	
 	/// Возвращает массив собранных вопросов
@@ -155,14 +163,14 @@ final class AddQuestionsBuilder {
 		
 		for question in data {
 			let questionObject = Question(id: Int.random(in: 1000...10000),
-										  text: question.value[Keys.text.rawValue] ?? "",
+										  text: question.value[fieldsKeys.text.rawValue] ?? "",
 							  answerOptions: [
-								question.value[Keys.first.rawValue] ?? "",
-								question.value[Keys.second.rawValue] ?? "",
-								question.value[Keys.third.rawValue] ?? "",
-								question.value[Keys.fourth.rawValue] ?? "",
+								question.value[fieldsKeys.first.rawValue] ?? "",
+								question.value[fieldsKeys.second.rawValue] ?? "",
+								question.value[fieldsKeys.third.rawValue] ?? "",
+								question.value[fieldsKeys.fourth.rawValue] ?? "",
 							  ],
-							  correctAnswer: Int(question.value[Keys.correctAnswer.rawValue] ?? "0") ?? 0,
+							  correctAnswer: Int(question.value[fieldsKeys.correctAnswer.rawValue] ?? "0") ?? 0,
 							  fiftyFiftyClue: [],
 							  callFriendClue: -1,
 							  hallHelp: HallHelpClue(
@@ -177,7 +185,7 @@ final class AddQuestionsBuilder {
 	}
 	
 	/// записывает последнее изменение текста поля
-	private func addText(for index: Int, key: Keys, text: String) {
+	private func addText(for index: Int, key: fieldsKeys, text: String) {
 		if let _ = questions[index] {
 			questions[index]?.updateValue(text, forKey: key.rawValue)
 		} else {
@@ -186,11 +194,11 @@ final class AddQuestionsBuilder {
 	}
 	
 	/// Отмечает, что переданное по ключу поле было заполнено
-	private func complete(for index: Int, key: String) {
+	private func complete(for index: Int, key: CompletionKeys) {
 		if let _ = questionsCompletion[index] {
-			questionsCompletion[index]?.updateValue(true, forKey: key)
+			questionsCompletion[index]?.updateValue(true, forKey: key.rawValue)
 		} else {
-			questionsCompletion.updateValue([key: true], forKey: index)
+			questionsCompletion.updateValue([key.rawValue: true], forKey: index)
 		}
 	}
 	
