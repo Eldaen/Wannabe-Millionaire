@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="twL-u9-Q6j">
-                                <rect key="frame" x="77" y="450" width="260" height="256"/>
+                                <rect key="frame" x="27" y="417.5" width="360" height="321"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0f-vY-5eH">
-                                        <rect key="frame" x="20" y="8" width="220" height="45"/>
+                                        <rect key="frame" x="20" y="8" width="320" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="QTA-f9-UZi"/>
-                                            <constraint firstAttribute="width" constant="220" id="edL-Zv-NGc"/>
+                                            <constraint firstAttribute="width" constant="320" id="ddB-jZ-Mmz"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -45,11 +45,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyx-hT-33S">
-                                        <rect key="frame" x="20" y="73" width="220" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="WcC-6n-HJj"/>
-                                            <constraint firstAttribute="width" constant="220" id="YNR-bC-imA"/>
-                                        </constraints>
+                                        <rect key="frame" x="20" y="73" width="320" height="45"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Новая игра" titleAlignment="center">
@@ -68,7 +64,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tY-Nj-sXW">
-                                        <rect key="frame" x="20" y="138" width="220" height="45"/>
+                                        <rect key="frame" x="20" y="138" width="320" height="45"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Рекорды" titleAlignment="center">
@@ -87,7 +83,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxK-TK-BqP">
-                                        <rect key="frame" x="20" y="203" width="220" height="45"/>
+                                        <rect key="frame" x="20" y="203" width="320" height="45"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Настройки" titleAlignment="center">
@@ -105,17 +101,40 @@
                                             <segue destination="dXN-YI-mIY" kind="show" identifier="SettingsController" id="qD2-D2-V3U"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfn-sg-HMZ">
+                                        <rect key="frame" x="20" y="268" width="320" height="45"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Добавить вопросы" titleAlignment="center">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="AccentColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="Wbt-pb-v57" kind="show" id="GqS-XJ-4di"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="2tY-Nj-sXW" firstAttribute="width" secondItem="fyx-hT-33S" secondAttribute="width" id="KEd-Ua-7D8"/>
-                                    <constraint firstItem="hxK-TK-BqP" firstAttribute="height" secondItem="fyx-hT-33S" secondAttribute="height" id="TR8-e4-bii"/>
-                                    <constraint firstItem="hxK-TK-BqP" firstAttribute="width" secondItem="fyx-hT-33S" secondAttribute="width" id="iqJ-U5-QQG"/>
-                                    <constraint firstItem="2tY-Nj-sXW" firstAttribute="height" secondItem="fyx-hT-33S" secondAttribute="height" id="nfM-6H-U2D"/>
+                                    <constraint firstItem="hxK-TK-BqP" firstAttribute="width" secondItem="w0f-vY-5eH" secondAttribute="width" id="6f1-iL-bGs"/>
+                                    <constraint firstItem="hxK-TK-BqP" firstAttribute="height" secondItem="w0f-vY-5eH" secondAttribute="height" id="Bps-yA-BhU"/>
+                                    <constraint firstItem="fyx-hT-33S" firstAttribute="height" secondItem="w0f-vY-5eH" secondAttribute="height" id="EuU-0I-cAO"/>
+                                    <constraint firstItem="Jfn-sg-HMZ" firstAttribute="height" secondItem="w0f-vY-5eH" secondAttribute="height" id="I64-09-7Ie"/>
+                                    <constraint firstItem="fyx-hT-33S" firstAttribute="width" secondItem="w0f-vY-5eH" secondAttribute="width" id="TsN-Bx-baw"/>
+                                    <constraint firstItem="2tY-Nj-sXW" firstAttribute="height" secondItem="w0f-vY-5eH" secondAttribute="height" id="fGf-Ho-ve6"/>
+                                    <constraint firstItem="2tY-Nj-sXW" firstAttribute="width" secondItem="w0f-vY-5eH" secondAttribute="width" id="qKM-fn-wDh"/>
+                                    <constraint firstItem="Jfn-sg-HMZ" firstAttribute="width" secondItem="w0f-vY-5eH" secondAttribute="width" id="rJP-4b-bgh"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="20"/>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kbc-d1-uhy">
-                                <rect key="frame" x="-75" y="195" width="564" height="251"/>
+                                <rect key="frame" x="-75" y="167.5" width="564" height="251"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -124,7 +143,7 @@
                             <constraint firstItem="kbc-d1-uhy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3bK-J1-55y"/>
                             <constraint firstItem="twL-u9-Q6j" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="130" id="EUV-hO-sLr"/>
                             <constraint firstItem="twL-u9-Q6j" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QVP-QS-IXe"/>
-                            <constraint firstItem="kbc-d1-uhy" firstAttribute="bottom" secondItem="twL-u9-Q6j" secondAttribute="bottom" constant="-260" id="o5F-hE-j5v"/>
+                            <constraint firstItem="kbc-d1-uhy" firstAttribute="bottom" secondItem="twL-u9-Q6j" secondAttribute="bottom" constant="-320" id="o5F-hE-j5v"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ih3-ZY-ccs">
@@ -260,7 +279,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ByG-97-tO4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="678"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="634"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -323,6 +342,7 @@
                             <constraint firstItem="xYw-NV-DUA" firstAttribute="bottom" secondItem="ByG-97-tO4" secondAttribute="bottom" constant="140" id="zXq-BR-e5l"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Vct-BX-fUM"/>
                     <connections>
                         <outlet property="tableView" destination="ByG-97-tO4" id="Oea-7a-pd6"/>
                     </connections>

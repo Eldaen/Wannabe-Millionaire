@@ -29,6 +29,16 @@ final class QuestionsCaretaker {
 		}
 	}
 	
+	func addQuestions(_ questions: [Question]) {
+		var questionsArray = questions
+		
+		if let oldQuestions = resumeSession() {
+			questionsArray += oldQuestions
+		}
+		
+		save(questionsArray)
+	}
+	
 	/// Загружает сессию
 	func resumeSession() -> [Question]? {
 		guard let data = UserDefaults.standard.data(forKey: key) else {

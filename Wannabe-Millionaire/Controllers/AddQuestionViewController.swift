@@ -73,7 +73,14 @@ final class AddQuestionViewController: UIViewController {
 	
 	@IBAction func addQuestions(_ sender: Any) {
 		let questions = builder.build()
-		caretaker.save(questions)
+		caretaker.addQuestions(questions)
+		formsCount = 0
+		goBack()
+	}
+	
+	/// Выходит на главный экран после добавления вопросов
+	private func goBack() {
+		navigationController?.popViewController(animated: true)
 	}
 }
 
@@ -100,35 +107,35 @@ extension AddQuestionViewController: UITableViewDataSource {
 		cell.questionText.addTarget(
 			self,
 			action: #selector(self.questionTextDidChange(sender:)),
-			for: UIControl.Event.editingDidEnd
+			for: UIControl.Event.editingChanged
 		)
 		cell.questionText.tag = tag
 		
 		cell.correctAnswer.addTarget(
 			self,
 			action: #selector(self.correctAnswerDidChange(sender:)),
-			for: UIControl.Event.editingDidEnd
+			for: UIControl.Event.editingChanged
 		)
 		cell.correctAnswer.tag = tag
 		
 		cell.answerTwo.addTarget(
 			self,
 			action: #selector(self.answerTwoDidChange(sender:)),
-			for: UIControl.Event.editingDidEnd
+			for: UIControl.Event.editingChanged
 		)
 		cell.answerTwo.tag = tag
 		
 		cell.answerThree.addTarget(
 			self,
 			action: #selector(self.answerThreeDidChange(sender:)),
-			for: UIControl.Event.editingDidEnd
+			for: UIControl.Event.editingChanged
 		)
 		cell.answerThree.tag = tag
 		
 		cell.answerFour.addTarget(
 			self,
 			action: #selector(self.answerFourDidChange(sender:)),
-			for: UIControl.Event.editingDidEnd
+			for: UIControl.Event.editingChanged
 		)
 		cell.answerFour.tag = tag
 		

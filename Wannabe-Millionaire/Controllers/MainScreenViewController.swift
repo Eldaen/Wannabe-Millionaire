@@ -61,8 +61,7 @@ final class MainScreenViewController: UIViewController {
 
 	/// Конфигурирует кнопки
 	private func setupButtons() {
-		let height = newGameButton.frame.height - 5
-		_ = stackView.subviews.map { $0.layer.cornerRadius = height / 2	}
+		newGameButton.frame.height - 5
 	}
 	
 	/// Экшн кнопки продолжить игру
