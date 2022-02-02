@@ -6,12 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 /// Билдер массива вопросов для добавления в программу
 final class AddQuestionsBuilder {
 	
 	/// Массив вопросов
 	var questions: [Question] = []
+	
+	/// Данные о завершении конфигурации вопросов
+	var questionsCompletion: [Int: [String: Bool]] = [:]
 	
 	private var text: String?
 	private var correctAnswer: String?
@@ -22,6 +26,7 @@ final class AddQuestionsBuilder {
 	func setText(_ text: String, index: Int) {
 		checkValidIndex(index)
 		questions[index].text = text
+		complete(for: index, key: "text")
 	}
 	
 	func setCorrectAnswer(_ text: String, index: Int) {
@@ -31,21 +36,38 @@ final class AddQuestionsBuilder {
 		questions[index].correctAnswer = questions.count - 1
 		
 		configureClues(for: questions.count - 1)
+		complete(for: index, key: "correctValue")
 	}
 	
 	func setAnswerTwo(_ text: String, index: Int) {
 		checkValidIndex(index)
 		questions[index].answerOptions.append(text)
+		complete(for: index, key: "answerTwo")
 	}
 	
 	func setAnswerThree(_ text: String, index: Int) {
 		checkValidIndex(index)
 		questions[index].answerOptions.append(text)
+		complete(for: index, key: "answerThree")
 	}
 	
 	func setAnswerFour(_ text: String, index: Int) {
 		checkValidIndex(index)
 		questions[index].answerOptions.append(text)
+		complete(for: index, key: "answerFour")
+	}
+	
+	/// Возвращает массив собранных вопросов
+	func build() -> [Question] {
+		var completeQuestionsIds: [Int] = []
+		
+		for id in questionsCompletion {
+			if id.value.count == 5 {
+				completeQuestionsIds.append(id.key)
+			}
+		}
+		
+		return questions.filter { completeQuestionsIds.contains( $0.id ) }
 	}
 	
 	/// Проверяет, есть ли уже вопрос с таким индексом, если нет - добавляет в массив пустой вопрос
@@ -102,7 +124,7 @@ final class AddQuestionsBuilder {
 	
 	/// Генерирует данные для подсказки Помощь друга
 	private func generateCallFriendClue() -> Int {
-		return [0, 1, 2, 3].randomElement() ?? -1
+		return [0, 1, 2, 3].randomElement()!
 	}
 	
 	/// Генерирует данные для подсказки Помощь Зала
@@ -133,5 +155,13 @@ final class AddQuestionsBuilder {
 		}
 		
 		return HallHelpClue(full: full, half: half)
+	}
+	
+	func complete(for index: Int, key: String) {
+		if let _ = questionsCompletion[index] {
+			questionsCompletion[index]?.updateValue(true, forKey: key)
+		} else {
+			questionsCompletion.updateValue([key: true], forKey: index)
+		}
 	}
 }

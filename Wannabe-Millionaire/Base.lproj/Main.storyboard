@@ -282,6 +282,9 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addQuestions:" destination="Wbt-pb-v57" eventType="touchUpInside" id="gSW-zt-JHV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrI-FW-3Ap">
                                 <rect key="frame" x="8" y="742" width="398" height="31"/>

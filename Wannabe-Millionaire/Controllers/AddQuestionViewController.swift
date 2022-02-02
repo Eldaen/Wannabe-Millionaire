@@ -36,7 +36,11 @@ final class AddQuestionViewController: UIViewController {
 	
 	@IBAction func addQuestionForm(_ sender: Any) {
 		formsCount += 1
-		tableView.reloadData()
+		
+		tableView.beginUpdates()
+		tableView.insertRows(at: [IndexPath.init(row: formsCount - 1, section: 0)], with: .automatic)
+		tableView.endUpdates()
+		
 		tableView.scrollToBottom()
 	}
 	
@@ -64,6 +68,11 @@ final class AddQuestionViewController: UIViewController {
 		guard let text = sender.text else { return }
 		builder.setAnswerFour(text, index: sender.tag)
 	}
+	
+	@IBAction func addQuestions(_ sender: Any) {
+		let questions = builder.build()
+		careTaker.save(questions)
+	}
 }
 
 // MARK: - UITableViewDataSource
@@ -84,37 +93,42 @@ extension AddQuestionViewController: UITableViewDataSource {
 			return UITableViewCell ()
 		}
 		
-		cell.tag = indexPath.row
+		let tag = formsCount - 1
 		
 		cell.questionText.addTarget(
 			self,
 			action: #selector(self.questionTextDidChange(sender:)),
 			for: UIControl.Event.editingDidEnd
 		)
+		cell.questionText.tag = tag
 		
 		cell.correctAnswer.addTarget(
 			self,
 			action: #selector(self.correctAnswerDidChange(sender:)),
 			for: UIControl.Event.editingDidEnd
 		)
+		cell.correctAnswer.tag = tag
 		
 		cell.answerTwo.addTarget(
 			self,
 			action: #selector(self.answerTwoDidChange(sender:)),
 			for: UIControl.Event.editingDidEnd
 		)
+		cell.answerTwo.tag = tag
 		
 		cell.answerThree.addTarget(
 			self,
 			action: #selector(self.answerThreeDidChange(sender:)),
 			for: UIControl.Event.editingDidEnd
 		)
+		cell.answerThree.tag = tag
 		
 		cell.answerFour.addTarget(
 			self,
 			action: #selector(self.answerFourDidChange(sender:)),
 			for: UIControl.Event.editingDidEnd
 		)
+		cell.answerFour.tag = tag
 		
 		return cell
 	}

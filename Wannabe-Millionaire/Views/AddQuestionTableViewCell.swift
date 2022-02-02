@@ -9,6 +9,9 @@ import UIKit
 
 /// Ячейка для добавления вопросов в приложение
 final class AddQuestionTableViewCell: UITableViewCell {
+	
+	/// Номер ячейки
+	var id: Int?
 
 	@IBOutlet weak var questionText: UITextField!
 	@IBOutlet weak var correctAnswer: UITextField!
