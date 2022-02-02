@@ -61,6 +61,6 @@ struct Question: Codable {
 
 extension Question: Equatable {
 	static func == (lhs: Question, rhs: Question) -> Bool {
-		lhs == rhs
+		lhs.id == rhs.id
 	}
 }

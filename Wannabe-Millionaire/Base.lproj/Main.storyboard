@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -259,7 +260,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ByG-97-tO4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="678"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -282,17 +283,41 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrI-FW-3Ap">
+                                <rect key="frame" x="8" y="742" width="398" height="31"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="plus" catalog="system" symbolScale="medium"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addQuestionForm:" destination="Wbt-pb-v57" eventType="touchUpInside" id="RzU-Bf-vXs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xYw-NV-DUA"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="IrI-FW-3Ap" firstAttribute="leading" secondItem="xYw-NV-DUA" secondAttribute="leading" constant="8" id="2Ew-es-bKb"/>
                             <constraint firstItem="ByG-97-tO4" firstAttribute="top" secondItem="xYw-NV-DUA" secondAttribute="top" id="3gw-qt-Yuu"/>
                             <constraint firstItem="ByG-97-tO4" firstAttribute="leading" secondItem="xYw-NV-DUA" secondAttribute="leading" id="6sO-bB-x0G"/>
                             <constraint firstItem="C1t-JM-JuA" firstAttribute="centerX" secondItem="6j8-iN-uA4" secondAttribute="centerX" id="8N3-W7-JG4"/>
                             <constraint firstItem="xYw-NV-DUA" firstAttribute="bottom" secondItem="C1t-JM-JuA" secondAttribute="bottom" constant="20" id="Cri-XV-E9i"/>
+                            <constraint firstItem="xYw-NV-DUA" firstAttribute="trailing" secondItem="IrI-FW-3Ap" secondAttribute="trailing" constant="8" id="Xl2-b0-gHy"/>
                             <constraint firstItem="xYw-NV-DUA" firstAttribute="trailing" secondItem="ByG-97-tO4" secondAttribute="trailing" id="cx9-bw-R7Q"/>
-                            <constraint firstItem="xYw-NV-DUA" firstAttribute="bottom" secondItem="ByG-97-tO4" secondAttribute="bottom" constant="100" id="zXq-BR-e5l"/>
+                            <constraint firstItem="IrI-FW-3Ap" firstAttribute="top" secondItem="ByG-97-tO4" secondAttribute="bottom" constant="20" id="pJh-l8-s8H"/>
+                            <constraint firstItem="IrI-FW-3Ap" firstAttribute="centerX" secondItem="6j8-iN-uA4" secondAttribute="centerX" id="qcX-rJ-LVb"/>
+                            <constraint firstItem="xYw-NV-DUA" firstAttribute="bottom" secondItem="ByG-97-tO4" secondAttribute="bottom" constant="140" id="zXq-BR-e5l"/>
                         </constraints>
                     </view>
                     <connections>
@@ -301,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YSD-zH-AA1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="1323"/>
+            <point key="canvasLocation" x="1837.68115942029" y="1322.5446428571429"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="aVv-IX-Kqa">
@@ -950,6 +975,7 @@
         <image name="mainLogo" width="564" height="251"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
