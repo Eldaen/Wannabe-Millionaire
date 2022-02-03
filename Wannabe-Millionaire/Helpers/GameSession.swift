@@ -72,6 +72,7 @@ class GameSession: Codable {
 	/// Восстанавливает фасад после загрузки
 	func resume() {
 		hintUsageFacade = HintUsageFacade(session: self, questionID: questionCountNumberInt)
+		questionCountNumber.value = questionCountNumberInt
 	}
 	
 	/// Увеличить ID вопроса на 1 и кол-во успехов на 1
