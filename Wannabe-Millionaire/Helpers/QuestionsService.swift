@@ -33,14 +33,7 @@ final class QuestionsService {
 	
 	/// Загружает вопросы в случайном порядке
 	func loadQuestionsRandom() -> [Question] {
-		do {
-			try readQuestionsFile()
-			return questions.shuffled()
-		} catch {
-			print(error)
-		}
-		
-		return []
+		return loadQuestions().shuffled()
 	}
 	
 	/// Читает файл с вопросами

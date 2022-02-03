@@ -11,6 +11,7 @@ import UIKit
 /// Билдер массива вопросов для добавления в программу
 final class AddQuestionsBuilder {
 	
+	/// ENUM ключей для названия полей ввода данных вопроса
 	enum fieldsKeys: String {
 		case text
 		case correctAnswer
@@ -20,6 +21,7 @@ final class AddQuestionsBuilder {
 		case fourth
 	}
 	
+	/// ENUM ключей для ввода данных заполненности вопроса перед генерацией
 	enum CompletionKeys: String {
 		case text
 		case correctValue
@@ -77,8 +79,14 @@ final class AddQuestionsBuilder {
 		return shuffled.map { configureClues(for: $0) }
 	}
 	
+}
+
+// MARK: - Private methods
+
+private extension AddQuestionsBuilder {
+	
 	/// Создаёт пустой вопрос
-	private func createEmptyQuestion(with index: Int) -> Question {
+	func createEmptyQuestion(with index: Int) -> Question {
 		return Question(id: Int.random(in: 1000...10000),
 						text: "",
 						answerOptions: [],
@@ -93,7 +101,7 @@ final class AddQuestionsBuilder {
 	}
 	
 	/// Заполняет Question данными для подсказок
-	private func configureClues(for question: Question) -> Question {
+	func configureClues(for question: Question) -> Question {
 		var result = question
 		let correctAnswer = question.correctAnswer
 		
@@ -105,7 +113,7 @@ final class AddQuestionsBuilder {
 	}
 	
 	/// Генерирует рандомные подсказки 50 на 50
-	private func generateFiftyFiftyClue(for index: Int) -> [Int] {
+	func generateFiftyFiftyClue(for index: Int) -> [Int] {
 		let possibleAnswers = [0, 1, 2, 3].filter { $0 != index }
 		var result: [Int] = []
 		var previousElement = -1
@@ -123,12 +131,12 @@ final class AddQuestionsBuilder {
 	}
 	
 	/// Генерирует данные для подсказки Помощь друга
-	private func generateCallFriendClue() -> Int {
+	func generateCallFriendClue() -> Int {
 		return [0, 1, 2, 3].randomElement()!
 	}
 	
 	/// Генерирует данные для подсказки Помощь Зала
-	private func generateHallHelpClue(correctAnswer index: Int) -> HallHelpClue {
+	func generateHallHelpClue(correctAnswer index: Int) -> HallHelpClue {
 		let firstAnswerFull = Int.random(in: 0...100)
 		let secondAnswerFull = Int.random(in: 0...(100 - firstAnswerFull))
 		let thirdAnswerFull = Int.random(in: 0...(100 - firstAnswerFull - secondAnswerFull))
@@ -158,7 +166,7 @@ final class AddQuestionsBuilder {
 	}
 	
 	/// Генерирует массив объектов Question из переданных данных
-	private func generateQuestions(using data: [Int: [String : String]]) -> [Question] {
+	func generateQuestions(using data: [Int: [String : String]]) -> [Question] {
 		var result: [Question] = []
 		
 		for question in data {
@@ -185,7 +193,7 @@ final class AddQuestionsBuilder {
 	}
 	
 	/// записывает последнее изменение текста поля
-	private func addText(for index: Int, key: fieldsKeys, text: String) {
+	func addText(for index: Int, key: fieldsKeys, text: String) {
 		if let _ = questions[index] {
 			questions[index]?.updateValue(text, forKey: key.rawValue)
 		} else {
@@ -194,7 +202,7 @@ final class AddQuestionsBuilder {
 	}
 	
 	/// Отмечает, что переданное по ключу поле было заполнено
-	private func complete(for index: Int, key: CompletionKeys) {
+	func complete(for index: Int, key: CompletionKeys) {
 		if let _ = questionsCompletion[index] {
 			questionsCompletion[index]?.updateValue(true, forKey: key.rawValue)
 		} else {
@@ -203,7 +211,7 @@ final class AddQuestionsBuilder {
 	}
 	
 	/// Перемешивает порядок ответов
-	private func shuffleOptions(for questions: [Question]) -> [Question] {
+	func shuffleOptions(for questions: [Question]) -> [Question] {
 		var result = questions
 		
 		for (index, question) in questions.enumerated() {

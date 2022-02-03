@@ -103,7 +103,20 @@ extension AddQuestionViewController: UITableViewDataSource {
 		}
 		
 		let tag = formsCount - 1
+		configureCell(cell: cell, tag: tag)
 		
+		return cell
+	}
+}
+
+
+// MARK: - Private methods
+
+extension AddQuestionViewController {
+	
+	/// Задаёт полям ячейки TAG для опознания пре редактировании
+	/// и выставляет экшны
+	private func configureCell(cell: AddQuestionTableViewCell, tag: Int) {
 		cell.questionText.addTarget(
 			self,
 			action: #selector(self.questionTextDidChange(sender:)),
@@ -138,7 +151,5 @@ extension AddQuestionViewController: UITableViewDataSource {
 			for: UIControl.Event.editingChanged
 		)
 		cell.answerFour.tag = tag
-		
-		return cell
 	}
 }

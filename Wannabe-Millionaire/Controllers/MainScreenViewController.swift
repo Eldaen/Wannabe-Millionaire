@@ -17,21 +17,6 @@ protocol ConfigurableDelegate: AnyObject {
 /// Контроллер главного меню
 final class MainScreenViewController: UIViewController {
 	
-	/// Состояния кнопки ПРОДОЛЖИТЬ
-	enum ContinueButtonState {
-		case on
-		case off
-		
-		var bool: Bool {
-			switch self {
-			case .off:
-				return true
-			default:
-				return false
-			}
-		}
-	}
-	
 	@IBOutlet weak var continueGameButton: UIButton!
 	@IBOutlet weak var newGameButton: UIButton!
 	@IBOutlet weak var recordsButton: UIButton!
@@ -43,7 +28,6 @@ final class MainScreenViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		checkSession()
-		setupButtons()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -57,11 +41,6 @@ final class MainScreenViewController: UIViewController {
 				vc.delegate = self
 			}
 		}
-	}
-
-	/// Конфигурирует кнопки
-	private func setupButtons() {
-		newGameButton.frame.height - 5
 	}
 	
 	/// Экшн кнопки продолжить игру

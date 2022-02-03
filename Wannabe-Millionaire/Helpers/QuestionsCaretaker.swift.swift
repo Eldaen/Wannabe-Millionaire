@@ -13,6 +13,7 @@ final class QuestionsCaretaker {
 	private let encoder = JSONEncoder()
 	private let decoder = JSONDecoder()
 	
+	/// Ключ для записи в UserDefaults
 	private let key: String
 	
 	init(key: String) {
