@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Foundation
 
 /// Протокол делегата для инициации запуска новой игры
 protocol NewGameDelegate: AnyObject {

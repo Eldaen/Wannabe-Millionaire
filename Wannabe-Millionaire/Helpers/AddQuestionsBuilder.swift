@@ -5,7 +5,6 @@
 //  Created by Денис Сизов on 02.02.2022.
 //
 
-import Foundation
 import UIKit
 
 /// Билдер массива вопросов для добавления в программу
