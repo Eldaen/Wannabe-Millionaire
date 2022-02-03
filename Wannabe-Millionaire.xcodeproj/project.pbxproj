@@ -11,6 +11,7 @@
 		D07CB4D527AA843900308A20 /* AddQuestionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07CB4D427AA843900308A20 /* AddQuestionsBuilder.swift */; };
 		D07CB4D727AABBCC00308A20 /* QuestionsCaretaker.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07CB4D627AABBCC00308A20 /* QuestionsCaretaker.swift.swift */; };
 		D07CB4D927ABC70400308A20 /* ContinueButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07CB4D827ABC70400308A20 /* ContinueButtonState.swift */; };
+		D07CB4DB27ABCAC600308A20 /* HintUsageFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07CB4DA27ABCAC600308A20 /* HintUsageFacade.swift */; };
 		D084B43227A2E1C200534E6D /* HallHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43127A2E1C200534E6D /* HallHelpViewController.swift */; };
 		D084B43427A3DD7400534E6D /* GameSessionCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43327A3DD7400534E6D /* GameSessionCaretaker.swift */; };
 		D084B43627A7E42900534E6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084B43527A7E42900534E6D /* SettingsViewController.swift */; };
@@ -45,6 +46,7 @@
 		D07CB4D427AA843900308A20 /* AddQuestionsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionsBuilder.swift; sourceTree = "<group>"; };
 		D07CB4D627AABBCC00308A20 /* QuestionsCaretaker.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCaretaker.swift.swift; sourceTree = "<group>"; };
 		D07CB4D827ABC70400308A20 /* ContinueButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueButtonState.swift; sourceTree = "<group>"; };
+		D07CB4DA27ABCAC600308A20 /* HintUsageFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintUsageFacade.swift; sourceTree = "<group>"; };
 		D084B43127A2E1C200534E6D /* HallHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallHelpViewController.swift; sourceTree = "<group>"; };
 		D084B43327A3DD7400534E6D /* GameSessionCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionCaretaker.swift; sourceTree = "<group>"; };
 		D084B43527A7E42900534E6D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				D07CB4D427AA843900308A20 /* AddQuestionsBuilder.swift */,
 				D07CB4D627AABBCC00308A20 /* QuestionsCaretaker.swift.swift */,
 				D07CB4D827ABC70400308A20 /* ContinueButtonState.swift */,
+				D07CB4DA27ABCAC600308A20 /* HintUsageFacade.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				D0E9402A27A150B0005A2879 /* AppDelegate.swift in Sources */,
 				D0E9404E27A19CBE005A2879 /* QuestionsService.swift in Sources */,
 				D0E9404B27A19BDD005A2879 /* Question.swift in Sources */,
+				D07CB4DB27ABCAC600308A20 /* HintUsageFacade.swift in Sources */,
 				D084B43627A7E42900534E6D /* SettingsViewController.swift in Sources */,
 				D07CB4D927ABC70400308A20 /* ContinueButtonState.swift in Sources */,
 				D084B43227A2E1C200534E6D /* HallHelpViewController.swift in Sources */,

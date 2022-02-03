@@ -20,7 +20,11 @@ class GameSession: Codable {
 	var questionCountNumber = Observable<Int>(1)
 	
 	/// Номер вопроса типа INT для сохранения в Codable
-	var questionCountNumberInt = 1
+	var questionCountNumberInt = 1 {
+		didSet {
+			hintUsageFacade?.currentQuestionID = questionCountNumberInt
+		}
+	}
 	
 	/// Текущее кол-во правильных ответов
 	var score: Int = 0
@@ -45,6 +49,9 @@ class GameSession: Codable {
 	/// Общее кол-во вопросов
 	var questionsCount: Int?
 	
+	/// Фасад для использования подсказок
+	var hintUsageFacade: HintUsageFacade?
+	
 	enum CodingKeys: String, CodingKey {
 		case currentQuestionArrayId
 		case currentQuestionID
@@ -59,6 +66,12 @@ class GameSession: Codable {
 	
 	init() {
 		questionCountNumber.value = questionCountNumberInt
+		hintUsageFacade = HintUsageFacade(session: self, questionID: questionCountNumberInt)
+	}
+	
+	/// Восстанавливает фасад после загрузки
+	func resume() {
+		hintUsageFacade = HintUsageFacade(session: self, questionID: questionCountNumberInt)
 	}
 	
 	/// Увеличить ID вопроса на 1 и кол-во успехов на 1

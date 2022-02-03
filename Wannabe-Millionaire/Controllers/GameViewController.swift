@@ -212,7 +212,7 @@ final class GameViewController: UIViewController {
 	
 	/// Использовать подсказку 50 на 50
 	private func useFiftyFiftyClue() {
-		guard !session.usedClues.contains(Clues.fiftyFifty.rawValue) else {
+		guard session.hintUsageFacade?.useFiftyFiftyClue() != nil else {
 			return
 		}
 		
@@ -224,14 +224,13 @@ final class GameViewController: UIViewController {
 				self?.answerButtons[id].isHidden = true
 			}
 		}
-		session.usedClues.append(Clues.fiftyFifty.rawValue)
-		session.currentQuestionClues.append(Clues.fiftyFifty.rawValue)
+		
 		showClueAsUsed(.fiftyFifty)
 	}
 	
 	/// Использовать подсказку Звонок другу
 	private func useFriendCallClue() {
-		guard !session.usedClues.contains(Clues.callFriend.rawValue) else {
+		guard session.hintUsageFacade?.useFriendCallClue() != nil else {
 			return
 		}
 		
@@ -240,14 +239,13 @@ final class GameViewController: UIViewController {
 		UIView.animate(withDuration: 0.4) { [weak self] in
 			self?.answerButtons[clue].backgroundColor = .orange
 		}
-		session.usedClues.append(Clues.callFriend.rawValue)
-		session.currentQuestionClues.append(Clues.callFriend.rawValue)
+		
 		showClueAsUsed(.callFriend)
 	}
 	
 	/// Использовать подсказку Помощь зала
 	private func useHallHelpClue() {
-		guard !session.currentQuestionClues.contains(Clues.hallHelp.rawValue) else {
+		guard session.hintUsageFacade?.useHallHelpClue() != nil else {
 			return
 		}
 		
@@ -273,8 +271,6 @@ final class GameViewController: UIViewController {
 			present(vc, animated: true, completion: nil)
 		}
 		
-		session.usedClues.append(Clues.hallHelp.rawValue)
-		session.currentQuestionClues.append(Clues.hallHelp.rawValue)
 		showClueAsUsed(.hallHelp)
 	}
 	

@@ -31,7 +31,9 @@ final class GameSessionCaretaker {
 			return nil
 		}
 		do {
-			return try self.decoder.decode(GameSession.self, from: data)
+			let session = try self.decoder.decode(GameSession.self, from: data)
+			session.resume()
+			return session
 		} catch {
 			print(error)
 			return nil
