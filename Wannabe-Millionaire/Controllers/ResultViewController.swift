@@ -42,7 +42,7 @@ final class ResultViewController: UIViewController {
 	
 	/// Выходим в главное меню
 	@IBAction func goToMainMenu(_ sender: Any) {
-		
+		navigationController?.isNavigationBarHidden = false
 		navigationController?.popToRootViewController(animated: true)
 	}
 	

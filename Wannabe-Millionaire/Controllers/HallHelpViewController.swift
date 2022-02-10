@@ -38,6 +38,8 @@ final class HallHelpViewController: UIViewController {
 			}
 			
 			let width = CGFloat(self.clueData[index] * Int(self.resultView.frame.width) / 120)
+			let widthConst = view.constraints.filter( { $0.firstAttribute == .width } )
+			NSLayoutConstraint.deactivate(widthConst)
 			view.widthAnchor.constraint(equalToConstant: width).isActive = true
 		}
 	}

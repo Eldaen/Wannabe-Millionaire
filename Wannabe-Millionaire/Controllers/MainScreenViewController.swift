@@ -7,23 +7,15 @@
 
 import UIKit
 
+/// Протокол для установки настроек
+protocol ConfigurableDelegate: AnyObject {
+	
+	/// Передаёт настройки игры
+	func setSettings(order: Game.QuestionsOrder)
+}
+
 /// Контроллер главного меню
 final class MainScreenViewController: UIViewController {
-	
-	/// Состояния кнопки ПРОДОЛЖИТЬ
-	enum ContinueButtonState {
-		case on
-		case off
-		
-		var bool: Bool {
-			switch self {
-			case .off:
-				return true
-			default:
-				return false
-			}
-		}
-	}
 	
 	@IBOutlet weak var continueGameButton: UIButton!
 	@IBOutlet weak var newGameButton: UIButton!
@@ -36,13 +28,19 @@ final class MainScreenViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		checkSession()
-		setupButtons()
 	}
-
-	/// Конфигурирует кнопки
-	private func setupButtons() {
-		let height = newGameButton.frame.height - 5
-		_ = stackView.subviews.map { $0.layer.cornerRadius = height / 2	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		checkSession()
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "SettingsController" {
+			if let vc = segue.destination as? SettingsViewController {
+				vc.delegate = self
+			}
+		}
 	}
 	
 	/// Экшн кнопки продолжить игру
@@ -51,6 +49,7 @@ final class MainScreenViewController: UIViewController {
 			withIdentifier: "GameViewController"
 		) as? GameViewController,
 		   let session = activeSession {
+			session.resetArrayCount()
 			vc.session = session
 			navigationController?.pushViewController(vc, animated: true)
 		}
@@ -70,10 +69,16 @@ final class MainScreenViewController: UIViewController {
 	func setContinueButton(state: ContinueButtonState) {
 		continueGameButton.isHidden = state.bool
 	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		checkSession()
+}
+
+// MARK: - ConfigurableDelegate
+
+extension MainScreenViewController: ConfigurableDelegate {
+	func setSettings(order: Game.QuestionsOrder) {
+		
+		// Настройки будут меняться, только если нет активной игры
+		guard Game.shared.sessionCaretaker.resumeSession() == nil else { return }
+		Game.shared.order = order
 	}
 }
 

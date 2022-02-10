@@ -9,13 +9,17 @@ import Foundation
 
 /// Модель вопроса
 struct Question: Codable {
-	
+
 	/// Варианты подсказки помощь зала
 	enum HallHelp: String {
 		case full = "full"
 		case half = "half"
 	}
 	
+	/// Номер вопроса
+	var id: Int
+	
+	/// Текст вопроса
 	var text: String
 	
 	/// Массив возможных ответов на вопрос
@@ -50,5 +54,13 @@ struct Question: Codable {
 		case .half:
 			return hallHelp.half
 		}
+	}
+}
+
+// MARK: -- Equatable
+
+extension Question: Equatable {
+	static func == (lhs: Question, rhs: Question) -> Bool {
+		lhs.id == rhs.id
 	}
 }

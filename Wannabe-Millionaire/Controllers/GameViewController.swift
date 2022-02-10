@@ -6,11 +6,15 @@
 //
 
 import UIKit
-import Foundation
 
 /// Протокол делегата для инициации запуска новой игры
 protocol NewGameDelegate: AnyObject {
 	func startNewGame()
+}
+
+/// Протокол стратегии задания вопросов
+protocol QuestionOrderStrategy {
+	func loadQuestions(for: GameSession) -> [Question]
 }
 
 /// Основной контроллер игры
@@ -27,9 +31,7 @@ final class GameViewController: UIViewController {
 	@IBOutlet weak var questionTextField: UILabel!
 	@IBOutlet var answerButtons: [UIView]!
 	@IBOutlet var answerLabels: [UILabel]!
-	
-	/// Сервис загрузки вопросов
-	let questionsService = QuestionsService()
+	@IBOutlet weak var progressLabel: UILabel!
 	
 	/// Массив вопросов
 	var questions: [Question] = []
@@ -37,11 +39,38 @@ final class GameViewController: UIViewController {
 	/// Текущая сессия игры
 	var session = GameSession()
 	
+	/// Стратегия задачи вопросов
+	private var questionOrderStrategy: QuestionOrderStrategy {
+		switch session.currentQuestionsOrder {
+		case .successively:
+			return SuccessivelyOrderStrategy()
+		case.random:
+			return RandomOrderStrategy()
+		}
+	}
+	
+	init() {
+		super.init(nibName: nil, bundle: nil)
+		observeQuestionCount()
+	}
+	
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		observeQuestionCount()
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-		loadQuestions()
+		questions = questionOrderStrategy.loadQuestions(for: session)
+		
+		if session.questionsCount == nil {
+			session.questionsCount = questions.count
+		}
+		
 		startTheGame()
 		disableUsedClues()
+		observeQuestionCount()
+		setupProgress()
     }
 	
 	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -72,7 +101,11 @@ final class GameViewController: UIViewController {
 	
 	/// Проверяет правильность ответа
 	private func checkAnswer(for tag: Int) {
-		if questions[session.currentQuestionId].checkAnswer(tag) {
+		let question = questions[session.currentQuestionArrayId]
+		
+		if question.checkAnswer(tag) {
+			session.checkQuestionAsAsked(id: question.id)
+			
 			animateAnswer(for: tag, result: true) { [weak self] in
 				self?.cleanClues()
 				self?.nextQuestion()
@@ -97,14 +130,10 @@ final class GameViewController: UIViewController {
 		}
 	}
 	
-	/// Загружает данные вопросов
-	private func loadQuestions() {
-		questions = questionsService.loadQuestions()
-	}
-	
 	/// Запускает игру
 	private func startTheGame() {
-		let question = questions[session.currentQuestionId]
+		let question = questions[session.currentQuestionArrayId]
+		session.currentlyAsking(question: question.id)
 		displayQuestion(question)
 	}
 	
@@ -138,10 +167,10 @@ final class GameViewController: UIViewController {
 	/// Переводит игру к следующему вопросу
 	private func nextQuestion() {
 		session.nextQuestion()
-		session.increaseScore()
-		Game.shared.sessionCaretaker.save(session)
 		
-		let questionId = session.currentQuestionId
+		let questionId = session.currentQuestionArrayId
+		session.currentlyAsking(question: questions[questionId].id)
+		Game.shared.sessionCaretaker.save(session)
 		
 		if questions.count > questionId {
 			displayQuestion(questions[questionId])
@@ -182,11 +211,11 @@ final class GameViewController: UIViewController {
 	
 	/// Использовать подсказку 50 на 50
 	private func useFiftyFiftyClue() {
-		guard !session.usedClues.contains(Clues.fiftyFifty.rawValue) else {
+		guard session.hintUsageFacade?.useFiftyFiftyClue() != nil else {
 			return
 		}
 		
-		let clue = questions[session.currentQuestionId].fiftyFiftyClue
+		let clue = questions[session.currentQuestionArrayId].fiftyFiftyClue
 		
 		UIView.animate(withDuration: 0.4) { [weak self] in
 			for id in clue {
@@ -194,30 +223,28 @@ final class GameViewController: UIViewController {
 				self?.answerButtons[id].isHidden = true
 			}
 		}
-		session.usedClues.append(Clues.fiftyFifty.rawValue)
-		session.currentQuestionClues.append(Clues.fiftyFifty.rawValue)
+		
 		showClueAsUsed(.fiftyFifty)
 	}
 	
 	/// Использовать подсказку Звонок другу
 	private func useFriendCallClue() {
-		guard !session.usedClues.contains(Clues.callFriend.rawValue) else {
+		guard session.hintUsageFacade?.useFriendCallClue() != nil else {
 			return
 		}
 		
-		let clue = questions[session.currentQuestionId].callFriendClue
+		let clue = questions[session.currentQuestionArrayId].callFriendClue
 		
 		UIView.animate(withDuration: 0.4) { [weak self] in
 			self?.answerButtons[clue].backgroundColor = .orange
 		}
-		session.usedClues.append(Clues.callFriend.rawValue)
-		session.currentQuestionClues.append(Clues.callFriend.rawValue)
+		
 		showClueAsUsed(.callFriend)
 	}
 	
 	/// Использовать подсказку Помощь зала
 	private func useHallHelpClue() {
-		guard !session.currentQuestionClues.contains(Clues.hallHelp.rawValue) else {
+		guard session.hintUsageFacade?.useHallHelpClue() != nil else {
 			return
 		}
 		
@@ -228,7 +255,7 @@ final class GameViewController: UIViewController {
 		if session.currentQuestionClues.contains(Clues.fiftyFifty.rawValue) {
 			key = .half
 			halfResults = true
-			removedResults = questions[session.currentQuestionId].fiftyFiftyClue
+			removedResults = questions[session.currentQuestionArrayId].fiftyFiftyClue
 		} else {
 			key = .full
 			halfResults = false
@@ -237,14 +264,12 @@ final class GameViewController: UIViewController {
 		if let vc = self.storyboard?.instantiateViewController(
 			withIdentifier: "HallHelpViewController"
 		) as? HallHelpViewController {
-			vc.clueData = questions[session.currentQuestionId].getHallHelp(for: key)
+			vc.clueData = questions[session.currentQuestionArrayId].getHallHelp(for: key)
 			vc.halfResults = halfResults
 			vc.removedAnswers = removedResults
 			present(vc, animated: true, completion: nil)
 		}
 		
-		session.usedClues.append(Clues.hallHelp.rawValue)
-		session.currentQuestionClues.append(Clues.hallHelp.rawValue)
 		showClueAsUsed(.hallHelp)
 	}
 	
@@ -301,9 +326,27 @@ final class GameViewController: UIViewController {
 			}
 		}
 	}
+	
+	private func observeQuestionCount() {
+		session.questionCountNumber.addObserver(self, options: [.new], closure: { [weak self] (number, _) in
+			guard let count = self?.session.questionsCount else { return }
+			
+			let progress = Double(number - 1) / Double(count) * 100
+			self?.progressLabel.text = "Вопрос: \(number), Прогресс - \(Int(progress))%"
+			self?.progressLabel.layoutIfNeeded()
+		})
+	}
+	
+	func setupProgress() {
+		guard let count = session.questionsCount else { return }
+		
+		let progress = Double(session.questionCountNumberInt - 1) / Double(count) * 100
+		progressLabel.text = "Вопрос: \(session.questionCountNumberInt), Прогресс - \(Int(progress))%"
+		progressLabel.layoutIfNeeded()
+	}
 }
 
-// MARK: NewGameDelegate
+// MARK: - NewGameDelegate
 
 extension GameViewController: NewGameDelegate {
 	func startNewGame() {
@@ -311,7 +354,7 @@ extension GameViewController: NewGameDelegate {
 		questions = []
 		clearCluesButtons()
 		
-		loadQuestions()
+		questions = questionOrderStrategy.loadQuestions(for: session)
 		startTheGame()
 	}
 }

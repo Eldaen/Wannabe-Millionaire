@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AddQuestionTableViewCell" customModule="Wannabe_Millionaire" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Текст вопроса" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O5J-Ak-2Lw">
+                    <rect key="frame" x="8" y="592" width="398" height="68"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="68" id="r26-BY-zNA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Правильный ответ" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jy0-wV-v9X">
+                    <rect key="frame" x="8" y="680" width="398" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="0l4-xB-KVD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="AddQuestionTableViewCell" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Вариант 2" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRJ-YM-uMw">
+                    <rect key="frame" x="8" y="734" width="398" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="9l9-sk-6js"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Вариант 3" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mhM-ns-sXF">
+                    <rect key="frame" x="8" y="788" width="398" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="na8-3k-0tP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите данные вопроса" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGC-X2-HTj">
+                    <rect key="frame" x="106" y="16" width="202" height="560"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Вариант 4" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXI-fP-CXe">
+                    <rect key="frame" x="8" y="842" width="398" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="S7e-50-4xt"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="O5J-Ak-2Lw" secondAttribute="trailing" constant="8" id="54p-Am-uQ2"/>
+                <constraint firstItem="eXI-fP-CXe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="8bq-C8-cuh"/>
+                <constraint firstItem="O5J-Ak-2Lw" firstAttribute="top" secondItem="EGC-X2-HTj" secondAttribute="bottom" constant="16" id="8mL-Xx-MYB"/>
+                <constraint firstAttribute="trailing" secondItem="IRJ-YM-uMw" secondAttribute="trailing" constant="8" id="9GT-Ic-Gmj"/>
+                <constraint firstAttribute="bottom" secondItem="eXI-fP-CXe" secondAttribute="bottom" constant="20" id="DaN-CO-yaE"/>
+                <constraint firstItem="EGC-X2-HTj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HIa-df-i7O"/>
+                <constraint firstItem="EGC-X2-HTj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="IhJ-dX-q7e"/>
+                <constraint firstItem="O5J-Ak-2Lw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LGN-Ab-lYB"/>
+                <constraint firstItem="IRJ-YM-uMw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="OrQ-zW-JN9"/>
+                <constraint firstItem="mhM-ns-sXF" firstAttribute="top" secondItem="IRJ-YM-uMw" secondAttribute="bottom" constant="20" id="QGF-l1-kDh"/>
+                <constraint firstItem="eXI-fP-CXe" firstAttribute="top" secondItem="mhM-ns-sXF" secondAttribute="bottom" constant="20" id="Udp-cx-jn1"/>
+                <constraint firstItem="IRJ-YM-uMw" firstAttribute="top" secondItem="Jy0-wV-v9X" secondAttribute="bottom" constant="20" id="aKS-XV-0XC"/>
+                <constraint firstAttribute="trailing" secondItem="eXI-fP-CXe" secondAttribute="trailing" constant="8" id="aKa-D0-N81"/>
+                <constraint firstAttribute="trailing" secondItem="Jy0-wV-v9X" secondAttribute="trailing" constant="8" id="aTX-Uj-HtJ"/>
+                <constraint firstAttribute="trailing" secondItem="mhM-ns-sXF" secondAttribute="trailing" constant="8" id="cV4-Wa-aAX"/>
+                <constraint firstItem="Jy0-wV-v9X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="k5D-Zb-9a5"/>
+                <constraint firstItem="O5J-Ak-2Lw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="nMM-L0-9Yd"/>
+                <constraint firstItem="Jy0-wV-v9X" firstAttribute="top" secondItem="O5J-Ak-2Lw" secondAttribute="bottom" constant="20" id="vl9-HI-08j"/>
+                <constraint firstItem="mhM-ns-sXF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="wYh-Ku-wZp"/>
+            </constraints>
+            <connections>
+                <outlet property="answerFour" destination="eXI-fP-CXe" id="Zmr-94-QcQ"/>
+                <outlet property="answerThree" destination="mhM-ns-sXF" id="phH-ms-XEv"/>
+                <outlet property="answerTwo" destination="IRJ-YM-uMw" id="mgm-6V-l1q"/>
+                <outlet property="correctAnswer" destination="Jy0-wV-v9X" id="1qK-9m-sPH"/>
+                <outlet property="questionText" destination="O5J-Ak-2Lw" id="lpx-6q-rzd"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="324.77678571428572"/>
+        </view>
+    </objects>
+</document>

@@ -8,12 +8,21 @@
 import Foundation
 
 /// Структура для хранения данных о текущей игре
-struct GameSession: Codable {
+class GameSession: Codable {
 	
-	/// Номер текущего вопроса
-	var currentQuestionId: Int = 0 {
+	/// Номер текущего вопроса в массиве загруженных вопросов
+	var currentQuestionArrayId: Int = 0
+	
+	/// ID текущего вопроса
+	var currentQuestionID: Int?
+	
+	/// Номер вопроса
+	var questionCountNumber = Observable<Int>(1)
+	
+	/// Номер вопроса типа INT для сохранения в Codable
+	var questionCountNumberInt = 1 {
 		didSet {
-			currentQuestionClues = []
+			hintUsageFacade?.currentQuestionID = questionCountNumberInt
 		}
 	}
 	
@@ -29,18 +38,68 @@ struct GameSession: Codable {
 	/// Использованные на этом вопросе подсказки
 	var currentQuestionClues: [Int] = []
 	
-	/// Увеличить результат на 1
-	mutating func increaseScore() {
-		score += 1
+	/// Порядок вопросов в текущей сессии
+	var currentQuestionsOrder: Game.QuestionsOrder {
+		Game.shared.order
 	}
 	
-	/// Увеличить ID вопроса на 1
-	mutating func nextQuestion() {
-		currentQuestionId += 1
+	/// Массив заданных вопросов
+	var askedQuestions: [Int] = []
+	
+	/// Общее кол-во вопросов
+	var questionsCount: Int?
+	
+	/// Фасад для использования подсказок
+	var hintUsageFacade: HintUsageFacade?
+	
+	enum CodingKeys: String, CodingKey {
+		case currentQuestionArrayId
+		case currentQuestionID
+		case questionCountNumberInt
+		case score
+		case success
+		case usedClues
+		case currentQuestionClues
+		case askedQuestions
+		case questionsCount
+	}
+	
+	init() {
+		questionCountNumber.value = questionCountNumberInt
+		hintUsageFacade = HintUsageFacade(session: self, questionID: questionCountNumberInt)
+	}
+	
+	/// Восстанавливает фасад после загрузки
+	func resume() {
+		hintUsageFacade = HintUsageFacade(session: self, questionID: questionCountNumberInt)
+		questionCountNumber.value = questionCountNumberInt
+	}
+	
+	/// Увеличить ID вопроса на 1 и кол-во успехов на 1
+	func nextQuestion() {
+		currentQuestionArrayId += 1
+		score += 1
+		questionCountNumber.value += 1
+		questionCountNumberInt = questionCountNumber.value
+		currentQuestionClues = []
+	}
+	
+	/// Сохраняет ID текущего вопроса, чтобы задать его при возобновлении игры
+	func currentlyAsking(question: Int) {
+		currentQuestionID = question
+	}
+	
+	/// Помечает вопрос как уже заданный
+	func checkQuestionAsAsked(id: Int) {
+		askedQuestions.append(id)
 	}
 	
 	/// Зафиксировать факт победы
-	mutating func didWin() {
+	func didWin() {
 		success = true
+	}
+	
+	func resetArrayCount() {
+		currentQuestionArrayId = 0
 	}
 }

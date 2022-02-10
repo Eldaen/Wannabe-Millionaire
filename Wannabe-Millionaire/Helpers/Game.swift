@@ -9,6 +9,15 @@ import Foundation
 
 /// Cинглтон, который хранит данные об игре
 final class Game {
+	
+	/// Порядок вопросов
+	enum QuestionsOrder: Int, Codable {
+		case successively = 0
+		case random
+	}
+	
+	/// Стратегия вывода вопросов
+	var order: QuestionsOrder = .successively
 
 	/// Массив рекордов
 	private(set) var records: [Record] {
